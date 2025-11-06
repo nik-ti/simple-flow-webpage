@@ -16,6 +16,14 @@ const regions = [
   { name: 'South Korea', code: '+82', flag: '🇰🇷' },
 ];
 
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -49,11 +57,54 @@ export default function Contact() {
 
     setStatus('loading');
 
-    setTimeout(() => {
+    const botToken =
+      import.meta.env.VITE_BOT_TOKEN ?? import.meta.env.BOT_TOKEN ?? '';
+    const chatId =
+      import.meta.env.VITE_CHAT_ID ?? import.meta.env.CHAT_ID ?? '';
+
+    if (!botToken || !chatId) {
+      console.error(
+        'Missing Telegram configuration. Ensure BOT_TOKEN and CHAT_ID are set.'
+      );
+      setStatus('error');
+      return;
+    }
+
+    const message = [
+      '<b>New Lead Received</b>',
+      '',
+      `<b>Name:</b> ${escapeHtml(formData.name)}`,
+      `<b>Email:</b> ${escapeHtml(formData.email)}`,
+      `<b>Phone:</b> ${escapeHtml(formData.phone)}`,
+      `<b>Message:</b> ${escapeHtml(formData.message)}`,
+    ].join('\n');
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${botToken}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'HTML',
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok || !data.ok) {
+        throw new Error(data?.description || 'Telegram API error');
+      }
+
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1000);
+    } catch (error) {
+      console.error('Failed to send Telegram message', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -177,6 +228,16 @@ export default function Contact() {
                   </>
                 )}
               </button>
+              {status === 'error' && (
+                <p className="text-sm text-red-400">
+                  Something went wrong. Please try again in a moment.
+                </p>
+              )}
+              {status === 'success' && (
+                <p className="text-sm text-emerald-400">
+                  Thanks! I&apos;ll reach out shortly.
+                </p>
+              )}
             </div>
           </form>
         </div>
@@ -188,10 +249,10 @@ export default function Contact() {
             </div>
             <h3 className="mb-2 font-medium text-white">Email</h3>
             <a
-              href="mailto:contact@simple-flow.com"
+              href="mailto:nikitatw354@gmail.com"
               className="text-zinc-400 hover:text-[#22d3ee] transition-colors"
             >
-              contact@simple-flow.com
+              nikitatw354@gmail.com
             </a>
           </div>
 
@@ -201,12 +262,12 @@ export default function Contact() {
             </div>
             <h3 className="mb-2 font-medium text-white">Telegram</h3>
             <a
-              href="https://t.me/simpleflow"
+              href="https://t.me/vvra_g"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-[#22d3ee] transition-colors"
             >
-              @simpleflow
+              @vvra.g
             </a>
           </div>
         </div>
