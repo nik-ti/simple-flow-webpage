@@ -19,7 +19,7 @@ export default function Projects() {
             money
           </p>
           <a
-            href="https://projects.simple-flow.com"
+            href="https://projects.simple-flow.co"
             target="_blank"
             rel="noopener noreferrer"
             className="group mt-8 inline-flex items-center gap-2 rounded-full border border-[#1e66ff]/50 bg-gradient-to-r from-[#1e66ff] to-[#7c5cff] px-8 py-4 text-base font-medium text-white shadow-[0_0_30px_rgba(30,102,255,0.3)] transition-all hover:shadow-[0_0_40px_rgba(30,102,255,0.5)]"
