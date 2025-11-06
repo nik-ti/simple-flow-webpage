@@ -1,21 +1,6 @@
 import { useState } from 'react';
 import { Mail, Send, MessageCircle } from 'lucide-react';
 
-const regions = [
-  { name: 'United States', code: '+1', flag: '🇺🇸' },
-  { name: 'Canada', code: '+1', flag: '🇨🇦' },
-  { name: 'United Kingdom', code: '+44', flag: '🇬🇧' },
-  { name: 'Australia', code: '+61', flag: '🇦🇺' },
-  { name: 'Germany', code: '+49', flag: '🇩🇪' },
-  { name: 'France', code: '+33', flag: '🇫🇷' },
-  { name: 'India', code: '+91', flag: '🇮🇳' },
-  { name: 'Brazil', code: '+55', flag: '🇧🇷' },
-  { name: 'Mexico', code: '+52', flag: '🇲🇽' },
-  { name: 'Japan', code: '+81', flag: '🇯🇵' },
-  { name: 'China', code: '+86', flag: '🇨🇳' },
-  { name: 'South Korea', code: '+82', flag: '🇰🇷' },
-];
-
 const escapeHtml = (value: string) =>
   value
     .replace(/&/g, '&amp;')
