@@ -247,12 +247,12 @@ export default function Contact() {
             </div>
             <h3 className="mb-2 font-medium text-white">Telegram</h3>
             <a
-              href="https://t.me/vvra_g"
+              href="https://t.me/vvr_ag"
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-[#22d3ee] transition-colors"
             >
-              @vvra.g
+              @vvr_ag
             </a>
           </div>
         </div>
