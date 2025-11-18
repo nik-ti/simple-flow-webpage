@@ -228,33 +228,35 @@ export default function Contact() {
         </div>
 
         <div className="space-y-4 lg:col-span-2">
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all hover:border-[#1e66ff]/50">
+          <a
+            href="mailto:nikitatw354@gmail.com"
+            className="block overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-[#1e66ff]/50"
+            aria-label="Email nikitatw354@gmail.com"
+          >
             <div className="mb-3 inline-flex rounded-xl border border-white/10 bg-white/5 p-2.5">
               <Mail size={20} className="text-[#22d3ee]" />
             </div>
             <h3 className="mb-2 font-medium text-white">Email</h3>
-            <a
-              href="mailto:nikitatw354@gmail.com"
-              className="text-zinc-400 hover:text-[#22d3ee] transition-colors"
-            >
+            <span className="text-zinc-400 hover:text-[#22d3ee] transition-colors">
               nikitatw354@gmail.com
-            </a>
-          </div>
+            </span>
+          </a>
 
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all hover:border-[#1e66ff]/50">
+          <a
+            href="https://t.me/vvr_ag"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-[#1e66ff]/50"
+            aria-label="Open Telegram @vvr_ag"
+          >
             <div className="mb-3 inline-flex rounded-xl border border-white/10 bg-white/5 p-2.5">
               <MessageCircle size={20} className="text-[#22d3ee]" />
             </div>
             <h3 className="mb-2 font-medium text-white">Telegram</h3>
-            <a
-              href="https://t.me/vvr_ag"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-400 hover:text-[#22d3ee] transition-colors"
-            >
+            <span className="text-zinc-400 hover:text-[#22d3ee] transition-colors">
               @vvr_ag
-            </a>
-          </div>
+            </span>
+          </a>
         </div>
       </div>
     </section>
