@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Hero from './components/Hero';
 import Navigation from './components/Navigation';
@@ -9,6 +10,7 @@ import Contact from './components/Contact';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,15 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScrollTop = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    handleScrollTop();
+    window.addEventListener('scroll', handleScrollTop, { passive: true });
+    return () => window.removeEventListener('scroll', handleScrollTop);
   }, []);
 
   return (
@@ -57,6 +68,16 @@ function App() {
       <Process />
       <Projects />
       <Contact />
+
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-200 shadow-[0_10px_30px_rgba(30,102,255,0.25)] backdrop-blur transition-all hover:-translate-y-1 hover:border-[#1e66ff]/60 hover:bg-white/10 hover:text-white"
+        >
+          <ArrowUp size={16} />
+          Top
+        </button>
+      )}
     </div>
   );
 }
