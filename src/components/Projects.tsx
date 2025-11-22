@@ -19,7 +19,7 @@ export default function Projects() {
             money
           </p>
           <a
-            href="https://projects.simple-flow.co"
+            href="https://wiry-opal-90c.notion.site/Completed-Projects-2af0bc015b5e8060b42ddf05a9de972f?pvs=143"
             target="_blank"
             rel="noopener noreferrer"
             className="group mt-8 inline-flex items-center gap-2 rounded-full border border-[#1e66ff]/50 bg-gradient-to-r from-[#1e66ff] to-[#7c5cff] px-8 py-4 text-base font-medium text-white shadow-[0_0_30px_rgba(30,102,255,0.3)] transition-all hover:shadow-[0_0_40px_rgba(30,102,255,0.5)]"
