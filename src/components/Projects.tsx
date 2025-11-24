@@ -15,7 +15,7 @@ export default function Projects() {
             </span>
           </h2>
           <p className="mt-4 text-lg text-zinc-400 md:text-xl">
-            See the projects that have already helped my customers save time and
+            See the projects that have already helped our customers save time and
             money
           </p>
           <a

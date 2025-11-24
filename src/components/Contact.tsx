@@ -105,7 +105,7 @@ export default function Contact() {
           </span>
         </h2>
         <p className="mt-4 max-w-2xl text-zinc-400 md:text-lg">
-          Ready to automate your workflow? Let's discuss how I can help
+          Ready to automate your workflow? Let's discuss how we can help
         </p>
       </div>
 

@@ -11,13 +11,13 @@ const steps = [
     icon: Pencil,
     title: 'Design',
     description:
-      "Create a tailored solution. Map out the exact automations and systems you need—no generic templates, just what works for you.",
+      'Create a personalized solution. Map out the exact automations and systems you need—no generic templates, just what works for you.',
   },
   {
     icon: Rocket,
     title: 'Execute',
     description:
-      'Build and deploy. I implement the solution, test everything, and make sure it runs smoothly so you can start saving time and money immediately.',
+      'Build and deploy. We implement the solution, test everything, and make sure it runs smoothly so you can start saving time and money immediately.',
   },
 ];
 

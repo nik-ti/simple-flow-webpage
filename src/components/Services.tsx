@@ -40,11 +40,11 @@ export default function Services() {
         <h2 className="text-4xl font-semibold md:text-5xl">
           What{' '}
           <span className="bg-gradient-to-r from-[#1e66ff] via-[#7c5cff] to-[#22d3ee] bg-clip-text text-transparent">
-            I Do
+            We Do
           </span>
         </h2>
         <p className="mt-4 max-w-2xl text-zinc-400 md:text-lg">
-          Transform your workflow with tailored solutions that work for you
+          Improve your workflow with solutions that are adapted to you
         </p>
       </div>
 

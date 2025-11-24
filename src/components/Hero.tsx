@@ -13,7 +13,7 @@ export default function Hero() {
           Scale.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl">
-          Custom automations and AI solutions that save you time and money
+          Personalized automations and AI solutions that save you time and money
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <button
