@@ -1650,10 +1650,16 @@
       const h1       = document.getElementById('hero-title');
       const mobile   = window.innerWidth < 900;
 
+      // On mobile just show the text immediately with a fade-in
+      if (mobile) {
+        h1.innerHTML = 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more<br><span style="white-space:nowrap">from it.</span></span>';
+        h1.style.transition = 'opacity 0.5s ease';
+        h1.style.opacity = '1';
+        return;
+      }
+
       // Pre-render final state invisibly to lock in height → no layout shift
-      h1.innerHTML = mobile
-        ? 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more<br><span style="white-space:nowrap">from it.</span></span>'
-        : 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more from it.</span>';
+      h1.innerHTML = 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more from it.</span>';
       h1.style.visibility = 'hidden';
       h1.style.opacity    = '1';
       h1.style.minHeight  = h1.offsetHeight + 'px';
