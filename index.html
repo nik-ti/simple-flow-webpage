@@ -1651,7 +1651,7 @@
       const line1 = 'Work less on your business';
 
       // Pre-render full text invisibly to reserve height → prevents layout shift on mobile
-      h1.innerHTML = line1 + '<span style="color:var(--blue)">.</span><br><span class="gt">Earn more from it.</span>';
+      h1.innerHTML = 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more <span style="white-space:nowrap">from it.</span></span>';
       h1.style.visibility = 'hidden';
       h1.style.opacity = '1';
       const reservedHeight = h1.offsetHeight;
@@ -1663,49 +1663,75 @@
       const cursor = document.createElement('span');
       cursor.style.cssText = 'display:inline-block;width:3px;height:0.82em;background:var(--black);margin-left:3px;vertical-align:middle;border-radius:1px;animation:twBlink 0.75s ease-in-out infinite;';
 
-      const textNode = document.createTextNode('');
-      h1.appendChild(textNode);
+      // ── Line 1: "Work less on " + nowrap("your business")
+      const prefix     = 'Work less on ';
+      const nowrap1txt = 'your business';
+      const prefixNode = document.createTextNode('');
+      const nowrap1    = document.createElement('span');
+      nowrap1.style.whiteSpace = 'nowrap';
+      const nowrap1Node = document.createTextNode('');
+      nowrap1.appendChild(nowrap1Node);
+
+      h1.appendChild(prefixNode);
+      h1.appendChild(nowrap1);
       h1.appendChild(cursor);
 
-      const line2text = 'Earn more from it.';
-      let i = 0;
+      // ── Line 2: gt span → "Earn more " + nowrap("from it.")
+      const line2Outer  = document.createElement('span');
+      line2Outer.className = 'gt';
+      const line2prefix = document.createTextNode('');
+      const nowrap2     = document.createElement('span');
+      nowrap2.style.whiteSpace = 'nowrap';
+      const nowrap2Node = document.createTextNode('');
+      nowrap2.appendChild(nowrap2Node);
+      line2Outer.appendChild(line2prefix);
+      line2Outer.appendChild(nowrap2);
+
       const speed = 42;
+      let i = 0, j = 0, k = 0, l = 0;
+      const l2pre = 'Earn more ';
+      const l2nw  = 'from it.';
 
       function typeLine1() {
-        if (i < line1.length) {
-          textNode.nodeValue += line1[i++];
+        if (i < prefix.length) {
+          prefixNode.nodeValue += prefix[i++];
           setTimeout(typeLine1, speed);
         } else {
-          // Blue dot after line 1
-          const dot = document.createElement('span');
-          dot.style.color = 'var(--blue)';
-          dot.textContent = '.';
-          h1.insertBefore(dot, cursor);
-
-          // Line break
-          h1.insertBefore(document.createElement('br'), cursor);
-
-          // Start typing line 2 after a short pause
-          setTimeout(typeLine2, 180);
+          typeNowrap1();
         }
       }
 
-      // Line 2 types as a gradient span
-      const line2node = document.createElement('span');
-      line2node.className = 'gt';
-      const line2text2 = document.createTextNode('');
-      line2node.appendChild(line2text2);
-
-      let j = 0;
-      function typeLine2() {
-        if (j === 0) {
-          h1.insertBefore(line2node, cursor);
-        }
-        if (j < line2text.length) {
-          line2text2.nodeValue += line2text[j++];
-          setTimeout(typeLine2, speed);
+      function typeNowrap1() {
+        if (j < nowrap1txt.length) {
+          nowrap1Node.nodeValue += nowrap1txt[j++];
+          setTimeout(typeNowrap1, speed);
         } else {
-          // Done — remove cursor
+          // Blue dot inside the nowrap span
+          const dot = document.createElement('span');
+          dot.style.color = 'var(--blue)';
+          dot.textContent = '.';
+          nowrap1.appendChild(dot);
+          // Line break then line 2
+          h1.insertBefore(document.createElement('br'), cursor);
+          h1.insertBefore(line2Outer, cursor);
+          setTimeout(typeLine2Prefix, 180);
+        }
+      }
+
+      function typeLine2Prefix() {
+        if (k < l2pre.length) {
+          line2prefix.nodeValue += l2pre[k++];
+          setTimeout(typeLine2Prefix, speed);
+        } else {
+          typeLine2Nowrap();
+        }
+      }
+
+      function typeLine2Nowrap() {
+        if (l < l2nw.length) {
+          nowrap2Node.nodeValue += l2nw[l++];
+          setTimeout(typeLine2Nowrap, speed);
+        } else {
           setTimeout(() => cursor.remove(), 500);
         }
       }
