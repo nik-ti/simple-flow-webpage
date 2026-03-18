@@ -1649,8 +1649,6 @@
     function runTypewriter() {
       const h1       = document.getElementById('hero-title');
       const mobile   = window.innerWidth < 900;
-      const speed    = mobile ? 22 : 40;
-      const jitter   = () => Math.random() * (mobile ? 8 : 16);
 
       // Pre-render final state invisibly to lock in height → no layout shift
       h1.innerHTML = mobile
@@ -1682,62 +1680,60 @@
       const line2Node  = document.createTextNode('');
       line2Outer.appendChild(line2Node);
 
-      const prefix1  = 'Work less on ';
-      const part1    = 'your business';
-      const l2a      = mobile ? 'Earn more' : 'Earn more from it.';
-      const l2b      = 'from it.';
-      let i=0, j=0, k=0, l=0;
+      // All text segments in order, with metadata
+      const segments = [
+        { node: prefixNode,  text: 'Work less on ' },
+        { node: nowrap1Node, text: 'your business', onDone: () => {
+            const dot = document.createElement('span');
+            dot.style.color = 'var(--blue)';
+            dot.textContent = '.';
+            nowrap1.appendChild(dot);
+            h1.insertBefore(document.createElement('br'), cursor);
+            h1.insertBefore(line2Outer, cursor);
+        }},
+        { node: line2Node,   text: mobile ? 'Earn more' : 'Earn more from it.', onDone: () => {
+            if (!mobile) return;
+            line2Outer.appendChild(document.createElement('br'));
+            const nw2 = document.createElement('span');
+            nw2.style.whiteSpace = 'nowrap';
+            const nw2Node = document.createTextNode('');
+            nw2.appendChild(nw2Node);
+            line2Outer.appendChild(nw2);
+            // push final segment
+            segments.push({ node: nw2Node, text: 'from it.' });
+        }},
+      ];
 
-      function typeLine1() {
-        if (i < prefix1.length) {
-          prefixNode.nodeValue += prefix1[i++];
-          setTimeout(typeLine1, speed + jitter());
-        } else typeNowrap1();
-      }
+      // rAF-based loop: one character per frame, interval controlled by speed
+      const msPerChar = mobile ? 30 : 42;
+      const jitter    = mobile ? 8 : 16;
+      let segIdx = 0, charIdx = 0, lastTs = null, nextDelay = msPerChar;
+      let pauseUntil = performance.now() + 320; // initial delay
 
-      function typeNowrap1() {
-        if (j < part1.length) {
-          nowrap1Node.nodeValue += part1[j++];
-          setTimeout(typeNowrap1, speed + jitter());
-        } else {
-          const dot = document.createElement('span');
-          dot.style.color = 'var(--blue)';
-          dot.textContent = '.';
-          nowrap1.appendChild(dot);
-          h1.insertBefore(document.createElement('br'), cursor);
-          h1.insertBefore(line2Outer, cursor);
-          setTimeout(typeLine2a, 200);
+      function tick(ts) {
+        if (ts < pauseUntil) { requestAnimationFrame(tick); return; }
+
+        if (!lastTs || ts - lastTs >= nextDelay) {
+          const seg = segments[segIdx];
+          if (!seg) { cursor.remove(); return; }
+
+          if (charIdx < seg.text.length) {
+            seg.node.nodeValue += seg.text[charIdx++];
+            lastTs    = ts;
+            nextDelay = msPerChar + Math.random() * jitter;
+          } else {
+            // segment done
+            if (seg.onDone) seg.onDone();
+            segIdx++;
+            charIdx = 0;
+            lastTs  = ts;
+            nextDelay = segIdx === 2 ? 200 : msPerChar; // pause before line 2
+          }
         }
+        requestAnimationFrame(tick);
       }
 
-      function typeLine2a() {
-        if (k < l2a.length) {
-          line2Node.nodeValue += l2a[k++];
-          setTimeout(typeLine2a, speed + jitter());
-        } else if (mobile) {
-          // Explicit BR before "from it." so it never reflows mid-type
-          line2Outer.appendChild(document.createElement('br'));
-          const nw2 = document.createElement('span');
-          nw2.style.whiteSpace = 'nowrap';
-          const nw2Node = document.createTextNode('');
-          nw2.appendChild(nw2Node);
-          line2Outer.appendChild(nw2);
-          setTimeout(() => typeLine2b(nw2Node), 80);
-        } else {
-          setTimeout(() => cursor.remove(), 500);
-        }
-      }
-
-      function typeLine2b(node) {
-        if (l < l2b.length) {
-          node.nodeValue += l2b[l++];
-          setTimeout(() => typeLine2b(node), speed + jitter());
-        } else {
-          setTimeout(() => cursor.remove(), 500);
-        }
-      }
-
-      setTimeout(typeLine1, 320);
+      requestAnimationFrame(tick);
     }
 
     // Start typewriter after fonts load
