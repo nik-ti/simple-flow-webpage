@@ -1705,8 +1705,8 @@
       ];
 
       // rAF-based loop: one character per frame, interval controlled by speed
-      const msPerChar = mobile ? 30 : 42;
-      const jitter    = mobile ? 8 : 16;
+      const msPerChar = mobile ? 14 : 42;
+      const jitter    = mobile ? 4 : 16;
       let segIdx = 0, charIdx = 0, lastTs = null, nextDelay = msPerChar;
       let pauseUntil = performance.now() + 320; // initial delay
 
