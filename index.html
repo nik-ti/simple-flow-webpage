@@ -1690,7 +1690,10 @@
           // Remove cursor, fade in line 2
           setTimeout(() => {
             cursor.remove();
-            requestAnimationFrame(() => { line2.style.opacity = '1'; });
+            // Double rAF: first frame paints opacity:0, second triggers the transition
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => { line2.style.opacity = '1'; });
+            });
           }, 220);
         }
       }
