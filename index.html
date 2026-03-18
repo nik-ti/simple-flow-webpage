@@ -1663,15 +1663,16 @@
       h1.appendChild(textNode);
       h1.appendChild(cursor);
 
+      const line2text = 'Earn more from it.';
       let i = 0;
       const speed = 42;
 
-      function typeChar() {
+      function typeLine1() {
         if (i < line1.length) {
           textNode.nodeValue += line1[i++];
-          setTimeout(typeChar, speed);
+          setTimeout(typeLine1, speed);
         } else {
-          // Blue dot
+          // Blue dot after line 1
           const dot = document.createElement('span');
           dot.style.color = 'var(--blue)';
           dot.textContent = '.';
@@ -1680,25 +1681,32 @@
           // Line break
           h1.insertBefore(document.createElement('br'), cursor);
 
-          // "Earn more from it." — gradient, starts invisible
-          const line2 = document.createElement('span');
-          line2.className = 'gt';
-          line2.textContent = 'Earn more from it.';
-          line2.style.cssText = 'opacity:0;transition:opacity 0.55s ease;display:block;';
-          h1.insertBefore(line2, cursor);
-
-          // Remove cursor, fade in line 2
-          setTimeout(() => {
-            cursor.remove();
-            // Double rAF: first frame paints opacity:0, second triggers the transition
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => { line2.style.opacity = '1'; });
-            });
-          }, 220);
+          // Start typing line 2 after a short pause
+          setTimeout(typeLine2, 180);
         }
       }
 
-      setTimeout(typeChar, 320);
+      // Line 2 types as a gradient span
+      const line2node = document.createElement('span');
+      line2node.className = 'gt';
+      const line2text2 = document.createTextNode('');
+      line2node.appendChild(line2text2);
+
+      let j = 0;
+      function typeLine2() {
+        if (j === 0) {
+          h1.insertBefore(line2node, cursor);
+        }
+        if (j < line2text.length) {
+          line2text2.nodeValue += line2text[j++];
+          setTimeout(typeLine2, speed);
+        } else {
+          // Done — remove cursor
+          setTimeout(() => cursor.remove(), 500);
+        }
+      }
+
+      setTimeout(typeLine1, 320);
     }
 
     // Start typewriter after fonts load
