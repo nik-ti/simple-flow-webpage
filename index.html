@@ -1647,90 +1647,91 @@
 
     // ─── TYPEWRITER ───
     function runTypewriter() {
-      const h1    = document.getElementById('hero-title');
-      const line1 = 'Work less on your business';
+      const h1       = document.getElementById('hero-title');
+      const mobile   = window.innerWidth < 900;
+      const speed    = 40;
+      const jitter   = () => Math.random() * 16; // natural feel
 
-      // Pre-render full text invisibly to reserve height → prevents layout shift on mobile
-      h1.innerHTML = 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more <span style="white-space:nowrap">from it.</span></span>';
+      // Pre-render final state invisibly to lock in height → no layout shift
+      h1.innerHTML = mobile
+        ? 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more<br><span style="white-space:nowrap">from it.</span></span>'
+        : 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more from it.</span>';
       h1.style.visibility = 'hidden';
-      h1.style.opacity = '1';
-      const reservedHeight = h1.offsetHeight;
-      h1.style.minHeight = reservedHeight + 'px';
+      h1.style.opacity    = '1';
+      h1.style.minHeight  = h1.offsetHeight + 'px';
       h1.style.visibility = '';
-      h1.innerHTML = '';
+      h1.innerHTML        = '';
 
-      // Cursor element
+      // ── Cursor
       const cursor = document.createElement('span');
       cursor.style.cssText = 'display:inline-block;width:3px;height:0.82em;background:var(--black);margin-left:3px;vertical-align:middle;border-radius:1px;animation:twBlink 0.75s ease-in-out infinite;';
 
-      // ── Line 1: "Work less on " + nowrap("your business")
-      const prefix     = 'Work less on ';
-      const nowrap1txt = 'your business';
-      const prefixNode = document.createTextNode('');
-      const nowrap1    = document.createElement('span');
+      // ── Line 1 DOM: prefixNode + nowrap1("your business" + dot)
+      const prefixNode  = document.createTextNode('');
+      const nowrap1     = document.createElement('span');
       nowrap1.style.whiteSpace = 'nowrap';
       const nowrap1Node = document.createTextNode('');
       nowrap1.appendChild(nowrap1Node);
-
       h1.appendChild(prefixNode);
       h1.appendChild(nowrap1);
       h1.appendChild(cursor);
 
-      // ── Line 2: gt span → "Earn more " + nowrap("from it.")
-      const line2Outer  = document.createElement('span');
+      // ── Line 2 DOM: gt span with text, and on mobile a BR + nowrap for "from it."
+      const line2Outer = document.createElement('span');
       line2Outer.className = 'gt';
-      const line2prefix = document.createTextNode('');
-      const nowrap2     = document.createElement('span');
-      nowrap2.style.whiteSpace = 'nowrap';
-      const nowrap2Node = document.createTextNode('');
-      nowrap2.appendChild(nowrap2Node);
-      line2Outer.appendChild(line2prefix);
-      line2Outer.appendChild(nowrap2);
+      const line2Node  = document.createTextNode('');
+      line2Outer.appendChild(line2Node);
 
-      const speed = 42;
-      let i = 0, j = 0, k = 0, l = 0;
-      const l2pre = 'Earn more ';
-      const l2nw  = 'from it.';
+      const prefix1  = 'Work less on ';
+      const part1    = 'your business';
+      const l2a      = mobile ? 'Earn more' : 'Earn more from it.';
+      const l2b      = 'from it.';
+      let i=0, j=0, k=0, l=0;
 
       function typeLine1() {
-        if (i < prefix.length) {
-          prefixNode.nodeValue += prefix[i++];
-          setTimeout(typeLine1, speed);
-        } else {
-          typeNowrap1();
-        }
+        if (i < prefix1.length) {
+          prefixNode.nodeValue += prefix1[i++];
+          setTimeout(typeLine1, speed + jitter());
+        } else typeNowrap1();
       }
 
       function typeNowrap1() {
-        if (j < nowrap1txt.length) {
-          nowrap1Node.nodeValue += nowrap1txt[j++];
-          setTimeout(typeNowrap1, speed);
+        if (j < part1.length) {
+          nowrap1Node.nodeValue += part1[j++];
+          setTimeout(typeNowrap1, speed + jitter());
         } else {
-          // Blue dot inside the nowrap span
           const dot = document.createElement('span');
           dot.style.color = 'var(--blue)';
           dot.textContent = '.';
           nowrap1.appendChild(dot);
-          // Line break then line 2
           h1.insertBefore(document.createElement('br'), cursor);
           h1.insertBefore(line2Outer, cursor);
-          setTimeout(typeLine2Prefix, 180);
+          setTimeout(typeLine2a, 200);
         }
       }
 
-      function typeLine2Prefix() {
-        if (k < l2pre.length) {
-          line2prefix.nodeValue += l2pre[k++];
-          setTimeout(typeLine2Prefix, speed);
+      function typeLine2a() {
+        if (k < l2a.length) {
+          line2Node.nodeValue += l2a[k++];
+          setTimeout(typeLine2a, speed + jitter());
+        } else if (mobile) {
+          // Explicit BR before "from it." so it never reflows mid-type
+          line2Outer.appendChild(document.createElement('br'));
+          const nw2 = document.createElement('span');
+          nw2.style.whiteSpace = 'nowrap';
+          const nw2Node = document.createTextNode('');
+          nw2.appendChild(nw2Node);
+          line2Outer.appendChild(nw2);
+          setTimeout(() => typeLine2b(nw2Node), 80);
         } else {
-          typeLine2Nowrap();
+          setTimeout(() => cursor.remove(), 500);
         }
       }
 
-      function typeLine2Nowrap() {
-        if (l < l2nw.length) {
-          nowrap2Node.nodeValue += l2nw[l++];
-          setTimeout(typeLine2Nowrap, speed);
+      function typeLine2b(node) {
+        if (l < l2b.length) {
+          node.nodeValue += l2b[l++];
+          setTimeout(() => typeLine2b(node), speed + jitter());
         } else {
           setTimeout(() => cursor.remove(), 500);
         }
