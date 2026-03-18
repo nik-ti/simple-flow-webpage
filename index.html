@@ -535,8 +535,15 @@
 
     /* ─── TYPEWRITER CURSOR ─── */
     @keyframes twBlink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     #hero-title {
@@ -564,7 +571,7 @@
       transform: translateY(12px);
       transition: opacity 0.25s ease, transform 0.25s ease, background 0.18s;
       pointer-events: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     #back-to-top.visible {
@@ -594,15 +601,15 @@
         gap: 32px 16px !important;
       }
 
-      #metrics-grid > div > div:first-child {
+      #metrics-grid>div>div:first-child {
         font-size: 34px !important;
       }
 
-      #metrics-grid > div > div:first-child > span {
+      #metrics-grid>div>div:first-child>span {
         font-size: 22px !important;
       }
 
-      #metrics-grid > div > div:last-child {
+      #metrics-grid>div>div:last-child {
         font-size: 13px !important;
       }
     }
@@ -620,7 +627,8 @@
 
       <!-- Logo -->
       <a href="#" style="display:flex; align-items:center; text-decoration:none; flex-shrink:0;">
-        <span style="font-size:17px; font-weight:700; color:var(--black); letter-spacing:-0.03em;">simple<span style="color:var(--blue);">flow</span></span>
+        <span style="font-size:17px; font-weight:700; color:var(--black); letter-spacing:-0.03em;">simple<span
+            style="color:var(--blue);">flow</span></span>
       </a>
 
       <!-- Nav links -->
@@ -703,12 +711,14 @@
             <div class="pulse" style="width:8px; height:8px; border-radius:50%; background:#22C55E; position:relative;">
             </div>
           </div>
-          <span class="hero-badge" style="font-size:13px; font-weight:600; color:var(--text);">Done-for-you · No upfront payment required</span>
+          <span class="hero-badge" style="font-size:13px; font-weight:600; color:var(--text);">Done-for-you · No upfront
+            payment required</span>
         </div>
 
         <!-- Headline -->
         <h1 id="hero-title"
-          style="font-size:clamp(52px, 6.5vw, 88px); font-weight:700; line-height:1.05; letter-spacing:-0.04em; color:var(--black); margin-bottom:28px;"></h1>
+          style="font-size:clamp(52px, 6.5vw, 88px); font-weight:700; line-height:1.05; letter-spacing:-0.04em; color:var(--black); margin-bottom:28px;">
+        </h1>
 
         <!-- Subtext -->
         <p class="fiu d3"
@@ -913,25 +923,29 @@
                   <path d="M4 7c0-1.657 1.343-3 3-3s3 1.343 3 3" stroke="#2563EB" stroke-width="1.5"
                     stroke-linecap="round" />
                   <path d="M7 4V2M7 12v-2M2 7H4M10 7h2" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" />
-                </svg></div>
+                </svg>
+              </div>
               <div
                 style="width:26px;height:26px;background:#FFF7ED;border-radius:4px;display:flex;align-items:center;justify-content:center;">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <rect x="2" y="3" width="10" height="8" rx="1.5" stroke="#F97316" stroke-width="1.5" />
                   <path d="M2 6h10" stroke="#F97316" stroke-width="1.5" />
-                </svg></div>
+                </svg>
+              </div>
               <div
                 style="width:26px;height:26px;background:#DCFCE7;border-radius:4px;display:flex;align-items:center;justify-content:center;">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <circle cx="7" cy="7" r="4.5" stroke="#16A34A" stroke-width="1.5" />
                   <path d="M7 5v2.5l2 1" stroke="#16A34A" stroke-width="1.5" stroke-linecap="round" />
-                </svg></div>
+                </svg>
+              </div>
               <div
                 style="width:26px;height:26px;background:#EDE9FE;border-radius:4px;display:flex;align-items:center;justify-content:center;">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M2 7h3l2-4 2 8 2-4h1" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"
                     stroke-linejoin="round" />
-                </svg></div>
+                </svg>
+              </div>
               <span style="font-size:12px; font-weight:600; color:var(--muted);">+120</span>
             </div>
           </div>
@@ -945,8 +959,8 @@
      METRICS STRIP
 ════════════════════════════════════════ -->
   <section style="background:var(--black); padding:64px 32px;">
-    <div
-      id="metrics-grid" style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:40px; text-align:center;">
+    <div id="metrics-grid"
+      style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:40px; text-align:center;">
       <div>
         <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">3<span
             style="color:var(--blue); font-size:32px; font-weight:600;"> days</span></div>
@@ -1412,7 +1426,8 @@
 
       <!-- Logo -->
       <a href="#" style="display:flex; align-items:center; text-decoration:none;">
-        <span style="font-size:16px; font-weight:700; color:white; letter-spacing:-0.03em;">simple<span style="color:#3898EC;">flow</span></span>
+        <span style="font-size:16px; font-weight:700; color:white; letter-spacing:-0.03em;">simple<span
+            style="color:#3898EC;">flow</span></span>
       </a>
 
       <!-- Links -->
@@ -1430,7 +1445,7 @@
       </div>
 
       <!-- Copyright -->
-      <span style="font-size:13px; color:#4B5563;">© 2025 Simple Flow</span>
+      <span style="font-size:13px; color:#4B5563;">© 2026 Simple Flow</span>
     </div>
   </footer>
 
@@ -1440,7 +1455,8 @@
 ════════════════════════════════════════ -->
   <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 14V4M4 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 14V4M4 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" />
     </svg>
   </button>
 
@@ -1550,7 +1566,7 @@
     }
 
     // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
       const menu = document.getElementById('mob-menu');
       const btn = document.getElementById('hamburger-btn');
       if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn) {
@@ -1590,11 +1606,11 @@
       document.body.style.overflow = '';
     }
 
-    document.getElementById('contact-modal').addEventListener('click', function(e) {
+    document.getElementById('contact-modal').addEventListener('click', function (e) {
       if (e.target === this) closeModal();
     });
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeModal();
     });
 
@@ -1608,13 +1624,13 @@
       errEl.style.display = 'none';
 
       const firstName = document.getElementById('cf-first-name').value.trim();
-      const lastName  = document.getElementById('cf-last-name').value.trim();
-      const email     = document.getElementById('cf-email').value.trim();
-      const phone     = document.getElementById('cf-phone').value.trim();
-      const message   = document.getElementById('cf-message').value.trim();
+      const lastName = document.getElementById('cf-last-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const phone = document.getElementById('cf-phone').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
 
       try {
-        const res  = await fetch('/api/contact', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ firstName, lastName, email, phone, message }),
@@ -1637,9 +1653,9 @@
       document.querySelectorAll('.workflow-card-item, .card, .t-card, .how-step').forEach(card => {
         const grid = card.parentElement;
         if (!grid) return;
-        if (window.innerWidth < 640)       grid.style.gridTemplateColumns = '1fr';
+        if (window.innerWidth < 640) grid.style.gridTemplateColumns = '1fr';
         else if (window.innerWidth < 1024) grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-        else                               grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        else grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
       });
     }
     updateGrids();
@@ -1647,8 +1663,8 @@
 
     // ─── TYPEWRITER ───
     function runTypewriter() {
-      const h1       = document.getElementById('hero-title');
-      const mobile   = window.innerWidth < 900;
+      const h1 = document.getElementById('hero-title');
+      const mobile = window.innerWidth < 900;
 
       // On mobile just show the text immediately with a fade-in
       if (mobile) {
@@ -1661,18 +1677,18 @@
       // Pre-render final state invisibly to lock in height → no layout shift
       h1.innerHTML = 'Work less on <span style="white-space:nowrap">your business<span style="color:var(--blue)">.</span></span><br><span class="gt">Earn more from it.</span>';
       h1.style.visibility = 'hidden';
-      h1.style.opacity    = '1';
-      h1.style.minHeight  = h1.offsetHeight + 'px';
+      h1.style.opacity = '1';
+      h1.style.minHeight = h1.offsetHeight + 'px';
       h1.style.visibility = '';
-      h1.innerHTML        = '';
+      h1.innerHTML = '';
 
       // ── Cursor
       const cursor = document.createElement('span');
       cursor.style.cssText = 'display:inline-block;width:3px;height:0.82em;background:var(--black);margin-left:3px;vertical-align:middle;border-radius:1px;animation:twBlink 0.75s ease-in-out infinite;';
 
       // ── Line 1 DOM: prefixNode + nowrap1("your business" + dot)
-      const prefixNode  = document.createTextNode('');
-      const nowrap1     = document.createElement('span');
+      const prefixNode = document.createTextNode('');
+      const nowrap1 = document.createElement('span');
       nowrap1.style.whiteSpace = 'nowrap';
       const nowrap1Node = document.createTextNode('');
       nowrap1.appendChild(nowrap1Node);
@@ -1683,21 +1699,24 @@
       // ── Line 2 DOM: gt span with text, and on mobile a BR + nowrap for "from it."
       const line2Outer = document.createElement('span');
       line2Outer.className = 'gt';
-      const line2Node  = document.createTextNode('');
+      const line2Node = document.createTextNode('');
       line2Outer.appendChild(line2Node);
 
       // All text segments in order, with metadata
       const segments = [
-        { node: prefixNode,  text: 'Work less on ' },
-        { node: nowrap1Node, text: 'your business', onDone: () => {
+        { node: prefixNode, text: 'Work less on ' },
+        {
+          node: nowrap1Node, text: 'your business', onDone: () => {
             const dot = document.createElement('span');
             dot.style.color = 'var(--blue)';
             dot.textContent = '.';
             nowrap1.appendChild(dot);
             h1.insertBefore(document.createElement('br'), cursor);
             h1.insertBefore(line2Outer, cursor);
-        }},
-        { node: line2Node,   text: mobile ? 'Earn more' : 'Earn more from it.', onDone: () => {
+          }
+        },
+        {
+          node: line2Node, text: mobile ? 'Earn more' : 'Earn more from it.', onDone: () => {
             if (!mobile) return;
             line2Outer.appendChild(document.createElement('br'));
             const nw2 = document.createElement('span');
@@ -1707,10 +1726,11 @@
             line2Outer.appendChild(nw2);
             // push final segment
             segments.push({ node: nw2Node, text: 'from it.' });
-        }},
+          }
+        },
       ];
 
-      const ms     = mobile ? 6 : 42;
+      const ms = mobile ? 6 : 42;
       const jitter = mobile ? 0 : 16;
       let segIdx = 0, charIdx = 0;
 
