@@ -1653,7 +1653,15 @@
     function runTypewriter() {
       const h1    = document.getElementById('hero-title');
       const line1 = 'Work less on your business';
+
+      // Pre-render full text invisibly to reserve height → prevents layout shift on mobile
+      h1.innerHTML = line1 + '<span style="color:var(--blue)">.</span><br><span class="gt">Earn more from it.</span>';
+      h1.style.visibility = 'hidden';
       h1.style.opacity = '1';
+      const reservedHeight = h1.offsetHeight;
+      h1.style.minHeight = reservedHeight + 'px';
+      h1.style.visibility = '';
+      h1.innerHTML = '';
 
       // Cursor element
       const cursor = document.createElement('span');
