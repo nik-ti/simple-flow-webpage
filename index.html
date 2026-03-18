@@ -1704,36 +1704,26 @@
         }},
       ];
 
-      // rAF-based loop: one character per frame, interval controlled by speed
-      const msPerChar = mobile ? 0 : 42;
-      const jitter    = mobile ? 0 : 16;
-      let segIdx = 0, charIdx = 0, lastTs = null, nextDelay = msPerChar;
-      let pauseUntil = performance.now() + 320; // initial delay
+      const ms     = mobile ? 6 : 42;
+      const jitter = mobile ? 0 : 16;
+      let segIdx = 0, charIdx = 0;
 
-      function tick(ts) {
-        if (ts < pauseUntil) { requestAnimationFrame(tick); return; }
+      function next() {
+        const seg = segments[segIdx];
+        if (!seg) { cursor.remove(); return; }
 
-        if (!lastTs || ts - lastTs >= nextDelay) {
-          const seg = segments[segIdx];
-          if (!seg) { cursor.remove(); return; }
-
-          if (charIdx < seg.text.length) {
-            seg.node.nodeValue += seg.text[charIdx++];
-            lastTs    = ts;
-            nextDelay = msPerChar + Math.random() * jitter;
-          } else {
-            // segment done
-            if (seg.onDone) seg.onDone();
-            segIdx++;
-            charIdx = 0;
-            lastTs  = ts;
-            nextDelay = segIdx === 2 ? 200 : msPerChar; // pause before line 2
-          }
+        if (charIdx < seg.text.length) {
+          seg.node.nodeValue += seg.text[charIdx++];
+          setTimeout(next, ms + Math.random() * jitter);
+        } else {
+          if (seg.onDone) seg.onDone();
+          segIdx++;
+          charIdx = 0;
+          setTimeout(next, segIdx === 2 ? 180 : ms);
         }
-        requestAnimationFrame(tick);
       }
 
-      requestAnimationFrame(tick);
+      setTimeout(next, 300);
     }
 
     // Start typewriter after fonts load
