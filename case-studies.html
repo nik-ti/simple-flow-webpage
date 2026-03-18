@@ -130,10 +130,13 @@
     }
     @media (max-width: 640px) {
       .nav-inner { padding: 0 20px !important; }
-      .cs-content { padding: 0 20px !important; }
+      .cs-content { padding: 32px 20px 60px !important; }
       .result-block { padding: 22px 20px !important; }
       .modal-box { padding: 32px 22px; }
       .modal-name-row { flex-direction: column !important; }
+      #cs-stats-row { grid-template-columns: 1fr !important; }
+      .cs-cta-block { flex-direction: column !important; align-items: flex-start !important; }
+      .page-header-inner { padding: 40px 20px 32px !important; }
     }
   </style>
 </head>
@@ -182,7 +185,7 @@
      PAGE HEADER
 ════════════════════════════════════════ -->
 <div style="padding-top:68px; background:white; border-bottom:1px solid var(--border);">
-  <div class="cs-content" style="max-width:860px; margin:0 auto; padding:60px 32px 48px;">
+  <div class="cs-content page-header-inner" style="max-width:860px; margin:0 auto; padding:60px 32px 48px;">
     <div style="font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); margin-bottom:14px;">Case Study</div>
     <h1 style="font-size:clamp(32px, 4vw, 54px); font-weight:700; line-height:1.08; letter-spacing:-0.04em; color:var(--black); margin-bottom:18px;">
       Our most recent<br>success story
@@ -265,7 +268,7 @@
   </div>
 
   <!-- CTA -->
-  <div style="padding:28px 32px; background:var(--black); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+  <div class="cs-cta-block" style="padding:28px 32px; background:var(--black); border-radius:8px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
     <div>
       <div style="font-size:17px; font-weight:700; color:white; margin-bottom:6px;">Want results like this?</div>
       <div style="font-size:14px; color:rgba(255,255,255,0.55);">One call is all it takes to get started.</div>
@@ -533,13 +536,6 @@ JS DATA (restore in <script> block):
     el.addEventListener('click', () => document.getElementById('mob-menu').classList.add('hidden'));
   });
 
-  // ─── STATS ROW RESPONSIVE ───
-  const statsRow = document.getElementById('cs-stats-row');
-  function updateStatsRow() {
-    statsRow.style.gridTemplateColumns = window.innerWidth < 500 ? '1fr' : 'repeat(3, 1fr)';
-  }
-  updateStatsRow();
-  window.addEventListener('resize', updateStatsRow);
 
   // ─── MODAL ───
   function openModal() {
