@@ -532,6 +532,80 @@
         flex-direction: column !important;
       }
     }
+
+    /* ─── TYPEWRITER CURSOR ─── */
+    @keyframes twBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    #hero-title {
+      animation: none !important;
+      opacity: 0;
+    }
+
+    /* ─── BACK TO TOP ─── */
+    #back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 500;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--black);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background 0.18s;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    #back-to-top:hover {
+      background: var(--blue);
+    }
+
+    /* ─── MOBILE EXTRA ─── */
+    @media (max-width: 640px) {
+      .hero-grid {
+        padding: 28px 20px 44px !important;
+        min-height: unset !important;
+      }
+
+      .hero-badge {
+        font-size: 11px !important;
+        padding: 6px 10px !important;
+      }
+
+      #metrics-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 32px 16px !important;
+      }
+
+      #metrics-grid > div > div:first-child {
+        font-size: 34px !important;
+      }
+
+      #metrics-grid > div > div:first-child > span {
+        font-size: 22px !important;
+      }
+
+      #metrics-grid > div > div:last-child {
+        font-size: 13px !important;
+      }
+    }
   </style>
 </head>
 
@@ -575,7 +649,7 @@
       </div>
 
       <!-- Mobile hamburger -->
-      <button onclick="document.getElementById('mob-menu').classList.toggle('hidden')"
+      <button id="hamburger-btn" onclick="toggleMobileMenu(event)"
         style="background:none; border:none; cursor:pointer; padding:6px;" class="md:hidden">
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
           <path d="M3 5.5h16M3 11h16M3 16.5h16" stroke="#1C1C1E" stroke-width="1.8" stroke-linecap="round" />
@@ -607,7 +681,7 @@
      HERO
 ════════════════════════════════════════ -->
   <section
-    style="min-height:100vh; display:flex; align-items:center; padding-top:68px; overflow:hidden; position:relative;">
+    style="min-height:100svh; display:flex; align-items:center; padding-top:68px; overflow:hidden; position:relative;">
 
     <!-- Background blobs -->
     <div class="blob" style="width:700px; height:700px; background:#BFDBFE; top:-200px; right:-200px; opacity:0.35;">
@@ -629,16 +703,12 @@
             <div class="pulse" style="width:8px; height:8px; border-radius:50%; background:#22C55E; position:relative;">
             </div>
           </div>
-          <span style="font-size:13px; font-weight:600; color:var(--text);">Done-for-you · No upfront payment
-            required</span>
+          <span class="hero-badge" style="font-size:13px; font-weight:600; color:var(--text);">Done-for-you · No upfront payment required</span>
         </div>
 
         <!-- Headline -->
-        <h1 class="fiu d2"
-          style="font-size:clamp(52px, 6.5vw, 88px); font-weight:700; line-height:1.0; letter-spacing:-0.04em; color:var(--black); margin-bottom:28px;">
-          Work less on <span style="white-space:nowrap;">your business<span style="color:var(--blue);">.</span></span><br>
-          <span class="gt">Earn more from it.</span>
-        </h1>
+        <h1 id="hero-title"
+          style="font-size:clamp(52px, 6.5vw, 88px); font-weight:700; line-height:1.05; letter-spacing:-0.04em; color:var(--black); margin-bottom:28px;"></h1>
 
         <!-- Subtext -->
         <p class="fiu d3"
@@ -880,7 +950,7 @@
 ════════════════════════════════════════ -->
   <section style="background:var(--black); padding:64px 32px;">
     <div
-      style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:40px; text-align:center;">
+      id="metrics-grid" style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:40px; text-align:center;">
       <div>
         <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">3<span
             style="color:var(--blue); font-size:32px; font-weight:600;"> days</span></div>
@@ -1370,6 +1440,16 @@
 
 
   <!-- ════════════════════════════════════════
+     BACK TO TOP
+════════════════════════════════════════ -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 14V4M4 9l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+
+  <!-- ════════════════════════════════════════
      CONTACT MODAL
 ════════════════════════════════════════ -->
   <div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -1459,37 +1539,48 @@
      SCRIPTS
 ════════════════════════════════════════ -->
   <script>
-    // Nav scroll effect
+    // ─── NAV SCROLL ───
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
+      // Back to top
+      document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 400);
     });
 
-    // Mobile menu close on link click
+    // ─── MOBILE MENU ───
+    function toggleMobileMenu(e) {
+      e.stopPropagation();
+      document.getElementById('mob-menu').classList.toggle('hidden');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mob-menu');
+      const btn = document.getElementById('hamburger-btn');
+      if (!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== btn) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Close on nav link click
     document.querySelectorAll('#mob-menu a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('mob-menu').classList.add('hidden');
       });
     });
 
-    // Responsive hero grid
+    // ─── HERO GRID ───
     const heroGrid = document.querySelector('.hero-grid');
     function updateHeroGrid() {
-      if (window.innerWidth < 1024) {
-        heroGrid.style.gridTemplateColumns = '1fr';
-      } else {
-        heroGrid.style.gridTemplateColumns = '1fr 1fr';
-      }
+      heroGrid.style.gridTemplateColumns = window.innerWidth < 1024 ? '1fr' : '1fr 1fr';
     }
     updateHeroGrid();
     window.addEventListener('resize', updateHeroGrid);
 
     // ─── MODAL ───
     function openModal() {
-      const overlay = document.getElementById('contact-modal');
-      overlay.classList.add('active');
+      document.getElementById('contact-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
-      // Reset form in case of previous submission
       document.getElementById('contact-form').style.display = '';
       document.getElementById('cf-success').style.display = 'none';
       document.getElementById('cf-error').style.display = 'none';
@@ -1503,13 +1594,11 @@
       document.body.style.overflow = '';
     }
 
-    // Close on overlay click
-    document.getElementById('contact-modal').addEventListener('click', function (e) {
+    document.getElementById('contact-modal').addEventListener('click', function(e) {
       if (e.target === this) closeModal();
     });
 
-    // Close on Escape key
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeModal();
     });
 
@@ -1523,13 +1612,13 @@
       errEl.style.display = 'none';
 
       const firstName = document.getElementById('cf-first-name').value.trim();
-      const lastName = document.getElementById('cf-last-name').value.trim();
-      const email = document.getElementById('cf-email').value.trim();
-      const phone = document.getElementById('cf-phone').value.trim();
-      const message = document.getElementById('cf-message').value.trim();
+      const lastName  = document.getElementById('cf-last-name').value.trim();
+      const email     = document.getElementById('cf-email').value.trim();
+      const phone     = document.getElementById('cf-phone').value.trim();
+      const message   = document.getElementById('cf-message').value.trim();
 
       try {
-        const res = await fetch('/api/contact', {
+        const res  = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ firstName, lastName, email, phone, message }),
@@ -1547,34 +1636,74 @@
       }
     }
 
-    // Responsive workflow/features/testimonials grid (3 col → 2 col → 1 col)
+    // ─── RESPONSIVE GRIDS ───
     function updateGrids() {
       document.querySelectorAll('.workflow-card-item, .card, .t-card, .how-step').forEach(card => {
         const grid = card.parentElement;
         if (!grid) return;
-        if (window.innerWidth < 640) {
-          grid.style.gridTemplateColumns = '1fr';
-        } else if (window.innerWidth < 1024) {
-          grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-        } else {
-          grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-        }
+        if (window.innerWidth < 640)       grid.style.gridTemplateColumns = '1fr';
+        else if (window.innerWidth < 1024) grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        else                               grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
       });
-      // Metrics strip
-      const metricsGrid = document.querySelector('.cta-section')?.previousElementSibling?.previousElementSibling;
-      if (metricsGrid) {
-        const inner = metricsGrid.querySelector('div[style*="grid-template-columns:repeat(4"]');
-        if (inner) {
-          if (window.innerWidth < 640) {
-            inner.style.gridTemplateColumns = 'repeat(2, 1fr)';
-          } else {
-            inner.style.gridTemplateColumns = 'repeat(4, 1fr)';
-          }
-        }
-      }
     }
     updateGrids();
     window.addEventListener('resize', updateGrids);
+
+    // ─── TYPEWRITER ───
+    function runTypewriter() {
+      const h1    = document.getElementById('hero-title');
+      const line1 = 'Work less on your business';
+      h1.style.opacity = '1';
+
+      // Cursor element
+      const cursor = document.createElement('span');
+      cursor.style.cssText = 'display:inline-block;width:3px;height:0.82em;background:var(--black);margin-left:3px;vertical-align:middle;border-radius:1px;animation:twBlink 0.75s ease-in-out infinite;';
+
+      const textNode = document.createTextNode('');
+      h1.appendChild(textNode);
+      h1.appendChild(cursor);
+
+      let i = 0;
+      const speed = 42;
+
+      function typeChar() {
+        if (i < line1.length) {
+          textNode.nodeValue += line1[i++];
+          setTimeout(typeChar, speed);
+        } else {
+          // Blue dot
+          const dot = document.createElement('span');
+          dot.style.color = 'var(--blue)';
+          dot.textContent = '.';
+          h1.insertBefore(dot, cursor);
+
+          // Line break
+          h1.insertBefore(document.createElement('br'), cursor);
+
+          // "Earn more from it." — gradient, starts invisible
+          const line2 = document.createElement('span');
+          line2.className = 'gt';
+          line2.textContent = 'Earn more from it.';
+          line2.style.cssText = 'opacity:0;transition:opacity 0.55s ease;display:block;';
+          h1.insertBefore(line2, cursor);
+
+          // Remove cursor, fade in line 2
+          setTimeout(() => {
+            cursor.remove();
+            requestAnimationFrame(() => { line2.style.opacity = '1'; });
+          }, 220);
+        }
+      }
+
+      setTimeout(typeChar, 320);
+    }
+
+    // Start typewriter after fonts load
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(runTypewriter);
+    } else {
+      window.addEventListener('load', runTypewriter);
+    }
   </script>
 
 </body>
