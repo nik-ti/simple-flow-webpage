@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Flow — Automation &amp; Systems for Growing Businesses</title>
+  <meta name="description"
+    content="We build automations and systems that save you time and make you more money. Done-for-you workflows for small and growing businesses.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F0F0F0;
+      --white: #FFFFFF;
+      --black: #1C1C1E;
+      --blue: #3898EC;
+      --blue-dark: #2176C7;
+      --blue-bg: #E8F3FD;
+      --text: #1C1C1E;
+      --muted: #6B7280;
+      --border: #D9D9D9;
+      --card-bg: #FFFFFF;
+      --font: 'Space Grotesk', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #C1C1C1;
+      border-radius: 3px;
+    }
+
+    /* ─── NAV ─── */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #nav.scrolled {
+      background: rgba(240, 240, 240, 0.94);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    /* ─── MARQUEE ─── */
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-inner {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      animation: marquee 32s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-wrap:hover .marquee-inner {
+      animation-play-state: paused;
+    }
+
+    /* ─── FLOW DOTS ─── */
+    @keyframes flowDot {
+      0% {
+        top: -6px;
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      92% {
+        opacity: 1;
+      }
+
+      100% {
+        top: calc(100% + 6px);
+        opacity: 0;
+      }
+    }
+
+    .flow-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: flowDot 2s ease-in-out infinite;
+    }
+
+    .flow-dot.d2 {
+      animation-delay: 0.67s;
+    }
+
+    .flow-dot.d3 {
+      animation-delay: 1.33s;
+    }
+
+    /* ─── FLOAT ─── */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(1.5deg);
+      }
+
+      50% {
+        transform: translateY(-18px) rotate(1.5deg);
+      }
+    }
+
+    .hero-float {
+      animation: float 7s ease-in-out infinite;
+    }
+
+    /* ─── FADE IN UP ─── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fiu {
+      opacity: 0;
+      animation: fadeInUp 0.65s ease forwards;
+    }
+
+    .fiu.d1 {
+      animation-delay: 0.05s;
+    }
+
+    .fiu.d2 {
+      animation-delay: 0.15s;
+    }
+
+    .fiu.d3 {
+      animation-delay: 0.25s;
+    }
+
+    .fiu.d4 {
+      animation-delay: 0.35s;
+    }
+
+    .fiu.d5 {
+      animation-delay: 0.45s;
+    }
+
+    /* ─── PULSE ─── */
+    @keyframes pulseRing {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(2.2);
+        opacity: 0;
+      }
+    }
+
+    .pulse::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #22C55E;
+      animation: pulseRing 1.8s ease-out infinite;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-primary {
+      background: var(--black);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 26px;
+      border-radius: 0;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 26px;
+      border-radius: 0;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background 0.18s ease, transform 0.12s ease;
+    }
+
+    .btn-blue:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--black);
+      font-family: var(--font);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 13px 22px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--black);
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+
+    /* ─── CARDS ─── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    }
+
+    .workflow-card-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 28px 32px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .workflow-card-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(56, 152, 236, 0.1);
+      border-color: #B6D9F9;
+    }
+
+    .workflow-card-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--blue);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .workflow-card-item:hover::before {
+      opacity: 1;
+    }
+
+    /* ─── TESTIMONIAL CARD ─── */
+    .t-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .t-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
+    }
+
+    /* ─── HERO STAT BADGE ─── */
+    .stat-badge {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      position: absolute;
+    }
+
+    /* ─── HOW STEP ─── */
+    .how-step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 28px;
+      position: relative;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .how-step:hover {
+      box-shadow: 0 12px 40px rgba(56, 152, 236, 0.08);
+    }
+
+    /* ─── STEP NUMBER BADGE ─── */
+    .step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--blue-bg);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── GRADIENT TEXT ─── */
+    .gt {
+      background: linear-gradient(120deg, #1C1C1E 0%, #3898EC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--black);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #141416;
+    }
+
+    /* ─── BLOB ─── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero-float {
+        display: none;
+      }
+
+      .hide-mobile {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-float {
+        transform: scale(0.85) rotate(1.5deg);
+        transform-origin: top right;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .hero-grid {
+        padding: 56px 20px !important;
+      }
+
+      h1 {
+        font-size: clamp(40px, 11vw, 64px) !important;
+      }
+
+      footer>div {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 20px !important;
+      }
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 548px;
+      padding: 48px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.22s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      background: #FAFAFA;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .modal-input:focus {
+      border-color: var(--blue);
+      background: white;
+    }
+
+    .modal-input::placeholder {
+      color: #9CA3AF;
+    }
+
+    .modal-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-box {
+        padding: 32px 22px;
+      }
+
+      .modal-name-row {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+  <nav id="nav">
+    <div
+      style="max-width:1280px; margin:0 auto; padding:0 32px; height:68px; display:flex; align-items:center; justify-content:space-between;">
+
+      <!-- Logo -->
+      <a href="#" style="display:flex; align-items:center; text-decoration:none; flex-shrink:0;">
+        <span style="font-size:17px; font-weight:700; color:var(--black); letter-spacing:-0.03em;">simple<span style="color:var(--blue);">flow</span></span>
+      </a>
+
+      <!-- Nav links -->
+      <div style="display:flex; align-items:center; gap:32px;" class="hide-mobile">
+        <a href="#workflows"
+          style="color:var(--muted); font-size:15px; font-weight:500; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#1C1C1E'" onmouseout="this.style.color='#6B7280'">What We Build</a>
+        <a href="#how-it-works"
+          style="color:var(--muted); font-size:15px; font-weight:500; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#1C1C1E'" onmouseout="this.style.color='#6B7280'">How it Works</a>
+        <a href="#testimonials"
+          style="color:var(--muted); font-size:15px; font-weight:500; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#1C1C1E'" onmouseout="this.style.color='#6B7280'">Results</a>
+        <a href="#pricing"
+          style="color:var(--muted); font-size:15px; font-weight:500; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#1C1C1E'" onmouseout="this.style.color='#6B7280'">Pricing</a>
+        <a href="case-studies.html"
+          style="color:var(--muted); font-size:15px; font-weight:500; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#1C1C1E'" onmouseout="this.style.color='#6B7280'">Case Studies</a>
+      </div>
+
+      <!-- CTA -->
+      <div style="display:flex; align-items:center; gap:12px;" class="hide-mobile">
+        <button onclick="openModal()" class="btn-primary"
+          style="border-radius:0; font-size:14px; padding:10px 20px;">Get in touch</button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button onclick="document.getElementById('mob-menu').classList.toggle('hidden')"
+        style="background:none; border:none; cursor:pointer; padding:6px;" class="md:hidden">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M3 5.5h16M3 11h16M3 16.5h16" stroke="#1C1C1E" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mob-menu" class="hidden"
+      style="background:var(--bg); border-top:1px solid var(--border); padding:20px 24px 28px;">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <a href="#workflows" style="color:var(--text); font-size:16px; font-weight:500; text-decoration:none;">What We
+          Build</a>
+        <a href="#how-it-works" style="color:var(--text); font-size:16px; font-weight:500; text-decoration:none;">How it
+          Works</a>
+        <a href="#testimonials"
+          style="color:var(--text); font-size:16px; font-weight:500; text-decoration:none;">Results</a>
+        <a href="#pricing" style="color:var(--text); font-size:16px; font-weight:500; text-decoration:none;">Pricing</a>
+        <a href="case-studies.html"
+          style="color:var(--text); font-size:16px; font-weight:500; text-decoration:none;">Case Studies</a>
+        <button onclick="openModal()" class="btn-primary"
+          style="justify-content:center; margin-top:8px; width:100%; text-align:center;">Get in touch</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+  <section
+    style="min-height:100vh; display:flex; align-items:center; padding-top:68px; overflow:hidden; position:relative;">
+
+    <!-- Background blobs -->
+    <div class="blob" style="width:700px; height:700px; background:#BFDBFE; top:-200px; right:-200px; opacity:0.35;">
+    </div>
+    <div class="blob" style="width:500px; height:500px; background:#DDD6FE; bottom:-150px; left:-150px; opacity:0.25;">
+    </div>
+
+    <div
+      style="max-width:1280px; margin:0 auto; padding:80px 32px; width:100%; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px;"
+      class="hero-grid">
+
+      <!-- Left: Copy -->
+      <div style="position:relative; z-index:1;">
+
+        <!-- Badge -->
+        <div class="fiu d1"
+          style="display:inline-flex; align-items:center; gap:8px; background:white; border:1px solid var(--border); border-radius:0; padding:7px 14px; margin-bottom:32px;">
+          <div style="position:relative; width:8px; height:8px; flex-shrink:0;">
+            <div class="pulse" style="width:8px; height:8px; border-radius:50%; background:#22C55E; position:relative;">
+            </div>
+          </div>
+          <span style="font-size:13px; font-weight:600; color:var(--text);">Done-for-you · No upfront payment
+            required</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="fiu d2"
+          style="font-size:clamp(52px, 6.5vw, 88px); font-weight:700; line-height:1.0; letter-spacing:-0.04em; color:var(--black); margin-bottom:28px;">
+          Work less on <span style="white-space:nowrap;">your business<span style="color:var(--blue);">.</span></span><br>
+          <span class="gt">Earn more from it.</span>
+        </h1>
+
+        <!-- Subtext -->
+        <p class="fiu d3"
+          style="font-size:18px; line-height:1.75; color:var(--muted); max-width:480px; margin-bottom:44px;">
+          We build systems that make you more revenue and save you more time. Simple.
+        </p>
+
+        <!-- CTAs -->
+        <div class="fiu d4" style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:56px;">
+          <button onclick="openModal()" class="btn-blue" style="font-size:16px; padding:15px 32px; cursor:pointer;">
+            Get in touch
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <a href="case-studies.html" class="btn-ghost" style="font-size:15px; padding:14px 24px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" />
+              <path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            </svg>
+            Case Studies
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="fiu d5" style="display:flex; flex-wrap:wrap; align-items:center; gap:28px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="display:flex; margin-right:4px;">
+              <div
+                style="width:30px;height:30px;border-radius:50%;background:#DBEAFE;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#2563EB;margin-right:-8px;z-index:3;">
+                S</div>
+              <div
+                style="width:30px;height:30px;border-radius:50%;background:#EDE9FE;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#7C3AED;margin-right:-8px;z-index:2;">
+                J</div>
+              <div
+                style="width:30px;height:30px;border-radius:50%;background:#DCFCE7;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#16A34A;z-index:1;">
+                P</div>
+            </div>
+            <span style="font-size:13px; color:var(--muted); font-weight:500;">12+ businesses served</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="color:#F59E0B; font-size:14px; letter-spacing:1px;">★★★★★</span>
+            <span style="font-size:13px; color:var(--muted); font-weight:500;">5.0 · From our clients</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Workflow Card (hero visual) -->
+      <div style="display:flex; justify-content:center; align-items:center; position:relative; min-height:480px;"
+        class="hide-mobile">
+        <div class="hero-float" style="position:relative;">
+
+          <!-- Main card -->
+          <div
+            style="background:white; border-radius:8px; border:1px solid var(--border); box-shadow:0 40px 100px rgba(0,0,0,0.12); width:360px; overflow:hidden;">
+
+            <!-- Title bar -->
+            <div
+              style="background:#F8F8F8; border-bottom:1px solid var(--border); padding:14px 18px; display:flex; align-items:center; gap:8px;">
+              <div style="display:flex;gap:5px;">
+                <div style="width:10px;height:10px;border-radius:50%;background:#FF5F57;"></div>
+                <div style="width:10px;height:10px;border-radius:50%;background:#FEBC2E;"></div>
+                <div style="width:10px;height:10px;border-radius:50%;background:#28C840;"></div>
+              </div>
+              <span style="font-size:12px; font-weight:600; color:var(--muted); flex:1; text-align:center;">Lead
+                Nurturing Flow</span>
+              <div
+                style="display:flex; align-items:center; gap:4px; background:#DCFCE7; padding:3px 9px; border-radius:100px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:#16A34A;"></div>
+                <span style="font-size:11px; font-weight:700; color:#16A34A;">Running</span>
+              </div>
+            </div>
+
+            <!-- Flow steps -->
+            <div style="padding:20px 18px;">
+
+              <!-- Step 1 -->
+              <div
+                style="display:flex; align-items:center; gap:12px; background:var(--blue-bg); border:1px solid #B6D9F9; border-radius:8px; padding:13px 14px;">
+                <div
+                  style="width:36px;height:36px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 2v12M2 8h12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px;">New Lead Captured
+                  </div>
+                  <div style="font-size:11px; color:var(--muted);">Trigger · Form / Webhook</div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;"></div>
+              </div>
+
+              <!-- Connector 1 -->
+              <div
+                style="position:relative; height:28px; width:2px; background:#DBEAFE; margin:6px auto; overflow:visible;">
+                <div class="flow-dot"></div>
+                <div class="flow-dot d2"></div>
+              </div>
+
+              <!-- Step 2 -->
+              <div
+                style="display:flex; align-items:center; gap:12px; background:white; border:1px solid var(--border); border-radius:8px; padding:13px 14px;">
+                <div
+                  style="width:36px;height:36px;background:#7C3AED;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect x="2" y="3" width="12" height="10" rx="2" stroke="white" stroke-width="1.5" />
+                    <path d="M5 7h6M5 10h4" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px;">Enrich in CRM
+                  </div>
+                  <div style="font-size:11px; color:var(--muted);">Action · HubSpot</div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;"></div>
+              </div>
+
+              <!-- Connector 2 -->
+              <div
+                style="position:relative; height:28px; width:2px; background:#DBEAFE; margin:6px auto; overflow:visible;">
+                <div class="flow-dot" style="animation-delay:0.4s;"></div>
+                <div class="flow-dot d2" style="animation-delay:1.1s;"></div>
+              </div>
+
+              <!-- Step 3 -->
+              <div
+                style="display:flex; align-items:center; gap:12px; background:white; border:1px solid var(--border); border-radius:8px; padding:13px 14px;">
+                <div
+                  style="width:36px;height:36px;background:#F97316;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <rect x="2" y="4" width="12" height="9" rx="2" stroke="white" stroke-width="1.5" />
+                    <path d="M2 7l6 4 6-4" stroke="white" stroke-width="1.5" />
+                  </svg>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px;">Send Welcome Email
+                  </div>
+                  <div style="font-size:11px; color:var(--muted);">Action · Gmail</div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex-shrink:0;"></div>
+              </div>
+
+              <!-- Connector 3 -->
+              <div
+                style="position:relative; height:28px; width:2px; background:#DBEAFE; margin:6px auto; overflow:visible;">
+                <div class="flow-dot" style="animation-delay:0.8s;"></div>
+                <div class="flow-dot d2" style="animation-delay:1.5s;"></div>
+              </div>
+
+              <!-- Step 4 -->
+              <div
+                style="display:flex; align-items:center; gap:12px; background:white; border:1px solid var(--border); border-radius:8px; padding:13px 14px;">
+                <div
+                  style="width:36px;height:36px;background:#0EA5E9;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <circle cx="8" cy="5.5" r="2.5" stroke="white" stroke-width="1.5" />
+                    <path d="M2.5 13.5c0-3 2.5-4.5 5.5-4.5s5.5 1.5 5.5 4.5" stroke="white" stroke-width="1.5"
+                      stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:2px;">Assign to Sales
+                    Rep</div>
+                  <div style="font-size:11px; color:var(--muted);">Action · Round robin</div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0;"></div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+              style="background:#F8F8F8; border-top:1px solid var(--border); padding:12px 18px; display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:12px; color:var(--muted);"><span
+                  style="color:#16A34A; font-weight:700;">3,412</span> runs this month</span>
+              <span style="font-size:12px; color:#9CA3AF;">Last run: 2m ago</span>
+            </div>
+          </div>
+
+          <!-- Floating badge: hours saved -->
+          <div class="stat-badge"
+            style="top:-22px; right:-28px; display:flex; align-items:center; gap:10px; border-radius:8px;">
+            <div
+              style="width:38px;height:38px;background:#DCFCE7;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M2 13l4.5-4.5L9 11l7-8" stroke="#16A34A" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <div style="font-size:18px; font-weight:700; color:var(--text); line-height:1.1;">87 hrs</div>
+              <div style="font-size:11px; color:var(--muted);">saved this week</div>
+            </div>
+          </div>
+
+          <!-- Floating badge: integrations -->
+          <div class="stat-badge" style="bottom:-18px; left:-32px; border-radius:8px;">
+            <div
+              style="font-size:10px; font-weight:700; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; margin-bottom:8px;">
+              Integrations</div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <div
+                style="width:26px;height:26px;background:#EFF6FF;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M4 7c0-1.657 1.343-3 3-3s3 1.343 3 3" stroke="#2563EB" stroke-width="1.5"
+                    stroke-linecap="round" />
+                  <path d="M7 4V2M7 12v-2M2 7H4M10 7h2" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" />
+                </svg></div>
+              <div
+                style="width:26px;height:26px;background:#FFF7ED;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <rect x="2" y="3" width="10" height="8" rx="1.5" stroke="#F97316" stroke-width="1.5" />
+                  <path d="M2 6h10" stroke="#F97316" stroke-width="1.5" />
+                </svg></div>
+              <div
+                style="width:26px;height:26px;background:#DCFCE7;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <circle cx="7" cy="7" r="4.5" stroke="#16A34A" stroke-width="1.5" />
+                  <path d="M7 5v2.5l2 1" stroke="#16A34A" stroke-width="1.5" stroke-linecap="round" />
+                </svg></div>
+              <div
+                style="width:26px;height:26px;background:#EDE9FE;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h3l2-4 2 8 2-4h1" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></div>
+              <span style="font-size:12px; font-weight:600; color:var(--muted);">+120</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     METRICS STRIP
+════════════════════════════════════════ -->
+  <section style="background:var(--black); padding:64px 32px;">
+    <div
+      style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:40px; text-align:center;">
+      <div>
+        <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">3<span
+            style="color:var(--blue); font-size:32px; font-weight:600;"> days</span></div>
+        <div style="font-size:14px; color:#6B7280; font-weight:500; margin-top:8px;">Average setup time</div>
+      </div>
+      <div>
+        <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">12<span
+            style="color:var(--blue);">+</span></div>
+        <div style="font-size:14px; color:#6B7280; font-weight:500; margin-top:8px;">Businesses worked with</div>
+      </div>
+      <div>
+        <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">27<span
+            style="color:var(--blue); font-size:32px; font-weight:600;">+ hrs</span></div>
+        <div style="font-size:14px; color:#6B7280; font-weight:500; margin-top:8px;">Saved per client monthly</div>
+      </div>
+      <div>
+        <div style="font-size:48px; font-weight:700; color:white; letter-spacing:-0.04em; line-height:1;">$0</div>
+        <div style="font-size:14px; color:#6B7280; font-weight:500; margin-top:8px;">Upfront payment required</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     WORKFLOWS WE SPECIALIZE IN
+════════════════════════════════════════ -->
+  <section id="workflows" style="padding:100px 32px; background:var(--bg);">
+    <div style="max-width:1280px; margin:0 auto;">
+
+      <!-- Header -->
+      <div style="max-width:640px; margin-bottom:60px;">
+        <div class="section-label" style="margin-bottom:14px;">What We Build</div>
+        <h2
+          style="font-size:clamp(36px, 4vw, 54px); font-weight:700; line-height:1.1; letter-spacing:-0.03em; color:var(--black); margin-bottom:20px;">
+          Workflows we<br>specialize in
+        </h2>
+        <p style="font-size:17px; line-height:1.75; color:var(--muted);">
+          Real systems we've built for real businesses. Each one designed to save time, bring in more revenue, or both.
+        </p>
+      </div>
+
+      <!-- Grid -->
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+
+        <!-- 1. Customer Reactivation -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:var(--blue-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 11a7 7 0 0 1 13.5-2.5" stroke="#3898EC" stroke-width="2" stroke-linecap="round" />
+              <path d="M18 4v5h-5" stroke="#3898EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="11" cy="11" r="2" fill="#3898EC" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            Customer Reactivation</h3>
+          <p style="font-size:13px; font-weight:600; color:var(--blue); margin-bottom:12px;">Your old customers are your
+            easiest sale.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">We reach out to people who
+            hired you before and stopped — automatically. No chasing, no manual follow-up. Just rebooked jobs.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:var(--blue-bg); color:var(--blue); font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Past
+              customers</span>
+            <span
+              style="background:var(--blue-bg); color:var(--blue); font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Automated
+              outreach</span>
+            <span
+              style="background:var(--blue-bg); color:var(--blue); font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">More
+              revenue</span>
+          </div>
+        </div>
+
+        <!-- 2. Lead Follow-Up -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:#EDE9FE; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7l-4 3V7a2 2 0 0 1 2-2z" stroke="#7C3AED"
+                stroke-width="2" />
+              <path d="M8 9h6M8 12h3" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            Lead Follow-Up</h3>
+          <p style="font-size:13px; font-weight:600; color:#7C3AED; margin-bottom:12px;">Most leads go cold because
+            nobody followed up fast enough.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">We build sequences that
+            contact new leads instantly and keep following up until they respond or opt out.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:#EDE9FE; color:#7C3AED; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Auto
+              follow-up</span>
+            <span
+              style="background:#EDE9FE; color:#7C3AED; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">SMS
+              + Email</span>
+            <span
+              style="background:#EDE9FE; color:#7C3AED; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">More
+              conversions</span>
+          </div>
+        </div>
+
+        <!-- 3. Invoice & Payment Reminders -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:#DCFCE7; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="4" y="3" width="14" height="16" rx="2" stroke="#16A34A" stroke-width="2" />
+              <path d="M8 8h6M8 12h4" stroke="#16A34A" stroke-width="1.5" stroke-linecap="round" />
+              <circle cx="15" cy="15" r="3.5" fill="white" stroke="#16A34A" stroke-width="1.5" />
+              <path d="M15 13.5v1.5l1 1" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            Invoice &amp; Payment Reminders</h3>
+          <p style="font-size:13px; font-weight:600; color:#16A34A; margin-bottom:12px;">Chasing unpaid invoices is a
+            waste of your time.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">We set up automatic
+            reminders that go out before and after a due date — so you get paid without the awkward calls.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:#DCFCE7; color:#16A34A; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Overdue
+              alerts</span>
+            <span
+              style="background:#DCFCE7; color:#16A34A; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Auto
+              reminders</span>
+            <span
+              style="background:#DCFCE7; color:#16A34A; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Faster
+              payments</span>
+          </div>
+        </div>
+
+        <!-- 4. Review Collection -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:#FFF7ED; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 3l2.09 4.26L18 8.27l-3.5 3.41.83 4.82L11 14.27l-4.33 2.23.83-4.82L4 8.27l4.91-.71z"
+                stroke="#F97316" stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            Review Collection</h3>
+          <p style="font-size:13px; font-weight:600; color:#F97316; margin-bottom:12px;">Most happy customers won't
+            leave a review unless you ask.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">We trigger automatic
+            review requests after a job is done — the right message, at the right time.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:#FFF7ED; color:#F97316; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Google
+              reviews</span>
+            <span
+              style="background:#FFF7ED; color:#F97316; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Automated
+              ask</span>
+            <span
+              style="background:#FFF7ED; color:#F97316; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Better
+              reputation</span>
+          </div>
+        </div>
+
+        <!-- 5. New Customer Onboarding -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:#E0F2FE; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="8" r="3.5" stroke="#0284C7" stroke-width="2" />
+              <path d="M4 19c0-3.866 3.134-5 7-5s7 1.134 7 5" stroke="#0284C7" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M17 4l2 2-2 2" stroke="#0284C7" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            New Customer Onboarding</h3>
+          <p style="font-size:13px; font-weight:600; color:#0284C7; margin-bottom:12px;">First impressions are automated
+            too.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">When someone books or
+            signs up, they automatically get everything they need — confirmation, next steps, reminders. No manual
+            sending.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:#E0F2FE; color:#0284C7; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Welcome
+              sequences</span>
+            <span
+              style="background:#E0F2FE; color:#0284C7; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Booking
+              confirmation</span>
+            <span
+              style="background:#E0F2FE; color:#0284C7; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Less
+              no-shows</span>
+          </div>
+        </div>
+
+        <!-- 6. Content & Marketing -->
+        <div class="workflow-card-item">
+          <div
+            style="width:44px; height:44px; background:#FFF1F2; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M4 5h14a2 2 0 0 1 2 2v3" stroke="#E11D48" stroke-width="2" stroke-linecap="round" />
+              <path d="M2 14h8M2 18h5" stroke="#E11D48" stroke-width="1.8" stroke-linecap="round" />
+              <circle cx="17" cy="16" r="4" stroke="#E11D48" stroke-width="1.8" />
+              <path d="M17 14v2.5l1.5 1" stroke="#E11D48" stroke-width="1.3" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:6px; letter-spacing:-0.02em;">
+            Content &amp; Marketing</h3>
+          <p style="font-size:13px; font-weight:600; color:#E11D48; margin-bottom:12px;">Your marketing shouldn't depend
+            on you having a free hour.</p>
+          <p style="font-size:15px; line-height:1.7; color:var(--muted); margin-bottom:20px;">We build systems that
+            generate email campaigns, social content ideas, and promotional sequences — on a schedule, without you
+            lifting a finger.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span
+              style="background:#FFF1F2; color:#E11D48; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Email
+              campaigns</span>
+            <span
+              style="background:#FFF1F2; color:#E11D48; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Content
+              generation</span>
+            <span
+              style="background:#FFF1F2; color:#E11D48; font-size:12px; font-weight:600; padding:4px 10px; border-radius:100px;">Auto-scheduled</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════ -->
+  <section id="how-it-works" style="padding:100px 32px; background:white; border-top:1px solid var(--border);">
+    <div style="max-width:1280px; margin:0 auto;">
+
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="section-label" style="margin-bottom:14px;">How It Works</div>
+        <h2
+          style="font-size:clamp(32px, 4vw, 52px); font-weight:700; line-height:1.1; letter-spacing:-0.03em; color:var(--black); margin-bottom:18px;">
+          You talk. We build.<br>You earn more.
+        </h2>
+        <p style="font-size:17px; line-height:1.75; color:var(--muted); max-width:480px; margin:0 auto;">
+          From first call to live system in days — not months.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+
+        <!-- Step 1 -->
+        <div class="how-step">
+          <div class="step-badge" style="margin-bottom:24px;">1</div>
+          <div
+            style="width:52px;height:52px;background:var(--blue-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16a2 2 0 0 1 2 2v3" stroke="#3898EC" stroke-width="2" stroke-linecap="round" />
+              <path d="M2 13h8M2 17h5" stroke="#3898EC" stroke-width="2" stroke-linecap="round" />
+              <circle cx="17" cy="17" r="5" stroke="#3898EC" stroke-width="2" />
+              <path d="M17 15v2.5l1.5 1" stroke="#3898EC" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--black); letter-spacing:-0.02em; margin-bottom:12px;">
+            We learn your business</h3>
+          <p style="font-size:15px; line-height:1.75; color:var(--muted);">One call. We identify what's eating your time
+            and costing you money.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="how-step">
+          <div class="step-badge" style="margin-bottom:24px;">2</div>
+          <div
+            style="width:52px;height:52px;background:var(--blue-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="6" width="6" height="4" rx="2" stroke="#3898EC" stroke-width="2" />
+              <rect x="15" y="6" width="6" height="4" rx="2" stroke="#3898EC" stroke-width="2" />
+              <rect x="9" y="14" width="6" height="4" rx="2" stroke="#3898EC" stroke-width="2" />
+              <path d="M6 10v1.5a2.5 2.5 0 0 0 2.5 2.5h3M18 10v1.5a2.5 2.5 0 0 1-2.5 2.5h-3" stroke="#3898EC"
+                stroke-width="1.5" />
+            </svg>
+          </div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--black); letter-spacing:-0.02em; margin-bottom:12px;">
+            We build the system</h3>
+          <p style="font-size:15px; line-height:1.75; color:var(--muted);">You don't touch anything. We set it up, test
+            it, and connect it to your existing tools.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="how-step">
+          <div class="step-badge" style="margin-bottom:24px;">3</div>
+          <div
+            style="width:52px;height:52px;background:var(--blue-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12l5 5L21 6" stroke="#3898EC" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 style="font-size:22px; font-weight:700; color:var(--black); letter-spacing:-0.02em; margin-bottom:12px;">
+            You see the results</h3>
+          <p style="font-size:15px; line-height:1.75; color:var(--muted);">More follow-ups sent, more jobs booked, less
+            time on admin.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════ -->
+  <section id="testimonials" style="padding:100px 32px; background:white; border-top:1px solid var(--border);">
+    <div style="max-width:1280px; margin:0 auto;">
+
+      <div style="text-align:center; margin-bottom:64px;">
+        <div class="section-label" style="margin-bottom:14px;">Results</div>
+        <h2
+          style="font-size:clamp(32px, 4vw, 52px); font-weight:700; line-height:1.1; letter-spacing:-0.03em; color:var(--black); margin-bottom:16px;">
+          What our customers say
+        </h2>
+        <p style="font-size:17px; line-height:1.75; color:var(--muted); max-width:500px; margin:0 auto;">
+          Real results from real business owners who stopped doing things manually.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+
+        <!-- Testimonial 1 -->
+        <div class="t-card">
+          <div style="display:flex; gap:3px; margin-bottom:20px;">
+            <span style="color:#F59E0B; font-size:16px;">★★★★★</span>
+          </div>
+          <blockquote style="font-size:15px; line-height:1.75; color:var(--text); font-weight:400; margin-bottom:20px;">
+            "Nik really got our business and all our quirky little processes right away. I didn't even realize how much
+            time we were wasting — our managers were spending hours on things that didn't need to be done by hand. He
+            spotted those bottlenecks and automated them. It's made a real difference in how smoothly everything runs
+            now."
+          </blockquote>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div
+              style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg, #DBEAFE, #93C5FD);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#2563EB;flex-shrink:0;">
+              J</div>
+            <div>
+              <div style="font-size:15px; font-weight:700; color:var(--black);">Jim</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:2px;">Founder, Splendid Moving</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="t-card">
+          <div style="display:flex; gap:3px; margin-bottom:20px;">
+            <span style="color:#F59E0B; font-size:16px;">★★★★★</span>
+          </div>
+          <blockquote style="font-size:15px; line-height:1.75; color:var(--text); font-weight:400; margin-bottom:20px;">
+            "Before Nik, our funnels were a total mess. We'd bounce between tools, stack one thing on top of another,
+            and nothing ever clicked. He cut through all of it, simplified our entire client flow, and made it perform
+            way better. We're now bringing in clients consistently and delivering without the usual stress."
+          </blockquote>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div
+              style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg, #EDE9FE, #C4B5FD);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#7C3AED;flex-shrink:0;">
+              O</div>
+            <div>
+              <div style="font-size:15px; font-weight:700; color:var(--black);">Olesya</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:2px;">Founder, NMD Consulting</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="t-card">
+          <div style="display:flex; gap:3px; margin-bottom:20px;">
+            <span style="color:#F59E0B; font-size:16px;">★★★★★</span>
+          </div>
+          <blockquote style="font-size:15px; line-height:1.75; color:var(--text); font-weight:400; margin-bottom:20px;">
+            "After working with Nik, I save hours every week on client delivery. What used to be a bunch of repetitive
+            manual steps is now handled automatically. That extra time lets me focus on growing my marketing and doing
+            more of the actual design work I enjoy."
+          </blockquote>
+          <div style="display:flex; align-items:center; gap:14px;">
+            <div
+              style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg, #DCFCE7, #86EFAC);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#16A34A;flex-shrink:0;">
+              J</div>
+            <div>
+              <div style="font-size:15px; font-weight:700; color:var(--black);">Julie</div>
+              <div style="font-size:13px; color:var(--muted); margin-top:2px;">Designer</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     CTA SECTION
+════════════════════════════════════════ -->
+  <section id="pricing" class="cta-section" style="padding:120px 32px;">
+    <div style="max-width:760px; margin:0 auto; text-align:center;">
+
+      <div
+        style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:0; padding:7px 16px; margin-bottom:32px;">
+        <span style="font-size:13px; font-weight:600; color:rgba(255,255,255,0.7);">We build and test first. Then get
+          paid.</span>
+      </div>
+
+      <h2
+        style="font-size:clamp(40px, 6vw, 80px); font-weight:700; line-height:1.0; letter-spacing:-0.04em; color:white; margin-bottom:24px;">
+        Ready to work less<br>and earn more?
+      </h2>
+
+      <p style="font-size:18px; line-height:1.75; color:rgba(255,255,255,0.6); max-width:480px; margin:0 auto 48px;">
+        One call is all it takes. We'll identify the biggest time-wasters in your business and show you exactly how we'd
+        fix them.
+      </p>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:14px; margin-bottom:36px;">
+        <button onclick="openModal()"
+          style="background:white; color:var(--black); font-family:var(--font); font-size:16px; font-weight:700; padding:16px 36px; border-radius:0; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:opacity 0.15s, transform 0.12s;"
+          onmouseover="this.style.opacity='0.9'; this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.opacity='1'; this.style.transform='translateY(0)'">
+          Get in touch
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Checkmarks -->
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+        <div
+          style="display:flex; align-items:center; gap:7px; color:rgba(255,255,255,0.55); font-size:14px; font-weight:500;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l4 4 6-7" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          No upfront payment
+        </div>
+        <div
+          style="display:flex; align-items:center; gap:7px; color:rgba(255,255,255,0.55); font-size:14px; font-weight:500;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l4 4 6-7" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Live in 3 days
+        </div>
+        <div
+          style="display:flex; align-items:center; gap:7px; color:rgba(255,255,255,0.55); font-size:14px; font-weight:500;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8l4 4 6-7" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          You don't touch anything
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+  <footer style="background:#141416; padding:48px 32px;">
+    <div
+      style="max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+
+      <!-- Logo -->
+      <a href="#" style="display:flex; align-items:center; text-decoration:none;">
+        <span style="font-size:16px; font-weight:700; color:white; letter-spacing:-0.03em;">simple<span style="color:#3898EC;">flow</span></span>
+      </a>
+
+      <!-- Links -->
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+        <a href="#workflows" style="font-size:14px; color:#6B7280; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#6B7280'">What We Build</a>
+        <a href="#how-it-works" style="font-size:14px; color:#6B7280; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#6B7280'">How It Works</a>
+        <a href="#testimonials" style="font-size:14px; color:#6B7280; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#6B7280'">Results</a>
+        <a href="#pricing" style="font-size:14px; color:#6B7280; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#6B7280'">Pricing</a>
+        <a href="case-studies.html" style="font-size:14px; color:#6B7280; text-decoration:none; transition:color 0.15s;"
+          onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#6B7280'">Case Studies</a>
+      </div>
+
+      <!-- Copyright -->
+      <span style="font-size:13px; color:#4B5563;">© 2025 Simple Flow</span>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+     CONTACT MODAL
+════════════════════════════════════════ -->
+  <div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+
+      <!-- Close button -->
+      <button onclick="closeModal()" aria-label="Close"
+        style="position:absolute; top:18px; right:18px; background:none; border:none; cursor:pointer; padding:6px; color:var(--muted); line-height:0; border-radius:6px; transition:background 0.15s;"
+        onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='none'">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <!-- Header -->
+      <div style="margin-bottom:32px;">
+        <h2 id="modal-title"
+          style="font-size:26px; font-weight:700; color:var(--black); letter-spacing:-0.03em; margin-bottom:8px;">Get in
+          touch</h2>
+        <p style="font-size:15px; color:var(--muted); line-height:1.6;">Tell us about your business and we'll get back
+          to you within 24 hours.</p>
+      </div>
+
+      <!-- Form -->
+      <form id="contact-form" onsubmit="submitContactForm(event)">
+        <div style="display:flex; gap:16px; margin-bottom:20px;" class="modal-name-row">
+          <div style="flex:1;">
+            <label class="modal-label" for="cf-first-name">First Name</label>
+            <input class="modal-input" type="text" id="cf-first-name" name="firstName" placeholder="John" required>
+          </div>
+          <div style="flex:1;">
+            <label class="modal-label" for="cf-last-name">Last Name</label>
+            <input class="modal-input" type="text" id="cf-last-name" name="lastName" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label class="modal-label" for="cf-email">Email</label>
+          <input class="modal-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label class="modal-label" for="cf-phone">Phone Number</label>
+          <input class="modal-input" type="tel" id="cf-phone" name="phone" placeholder="+1 234 567 8900" required>
+        </div>
+
+        <div style="margin-bottom:28px;">
+          <label class="modal-label" for="cf-message">What do you need help with?</label>
+          <textarea class="modal-input" id="cf-message" name="message" rows="4"
+            placeholder="Describe your business and what you'd like to automate..." required
+            style="resize:none;"></textarea>
+        </div>
+
+        <!-- Error message -->
+        <p id="cf-error" style="display:none; font-size:13px; color:#DC2626; margin-bottom:16px;"></p>
+
+        <!-- Submit -->
+        <button type="submit" id="cf-submit" class="btn-blue"
+          style="width:100%; justify-content:center; font-size:16px; padding:15px 24px; border:none;">
+          <span id="cf-submit-text">Send message</span>
+          <svg id="cf-submit-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 8h10M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </form>
+
+      <!-- Success state (hidden by default) -->
+      <div id="cf-success" style="display:none; text-align:center; padding:20px 0;">
+        <div
+          style="width:56px; height:56px; background:#DCFCE7; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12l6 6L20 6" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--black); margin-bottom:10px;">Message sent!</h3>
+        <p style="font-size:15px; color:var(--muted); max-width:320px; margin:0 auto;">We'll get back to you within 24
+          hours.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu close on link click
+    document.querySelectorAll('#mob-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mob-menu').classList.add('hidden');
+      });
+    });
+
+    // Responsive hero grid
+    const heroGrid = document.querySelector('.hero-grid');
+    function updateHeroGrid() {
+      if (window.innerWidth < 1024) {
+        heroGrid.style.gridTemplateColumns = '1fr';
+      } else {
+        heroGrid.style.gridTemplateColumns = '1fr 1fr';
+      }
+    }
+    updateHeroGrid();
+    window.addEventListener('resize', updateHeroGrid);
+
+    // ─── MODAL ───
+    function openModal() {
+      const overlay = document.getElementById('contact-modal');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Reset form in case of previous submission
+      document.getElementById('contact-form').style.display = '';
+      document.getElementById('cf-success').style.display = 'none';
+      document.getElementById('cf-error').style.display = 'none';
+      document.getElementById('cf-submit').disabled = false;
+      document.getElementById('cf-submit-text').textContent = 'Send message';
+      document.getElementById('cf-submit-icon').style.display = '';
+    }
+
+    function closeModal() {
+      document.getElementById('contact-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close on overlay click
+    document.getElementById('contact-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    async function submitContactForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit');
+      const errEl = document.getElementById('cf-error');
+      btn.disabled = true;
+      document.getElementById('cf-submit-text').textContent = 'Sending…';
+      document.getElementById('cf-submit-icon').style.display = 'none';
+      errEl.style.display = 'none';
+
+      const firstName = document.getElementById('cf-first-name').value.trim();
+      const lastName = document.getElementById('cf-last-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const phone = document.getElementById('cf-phone').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName, lastName, email, phone, message }),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data?.error || 'Request failed');
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('cf-success').style.display = '';
+      } catch (err) {
+        errEl.textContent = 'Something went wrong. Please try again.';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        document.getElementById('cf-submit-text').textContent = 'Send message';
+        document.getElementById('cf-submit-icon').style.display = '';
+      }
+    }
+
+    // Responsive workflow/features/testimonials grid (3 col → 2 col → 1 col)
+    function updateGrids() {
+      document.querySelectorAll('.workflow-card-item, .card, .t-card, .how-step').forEach(card => {
+        const grid = card.parentElement;
+        if (!grid) return;
+        if (window.innerWidth < 640) {
+          grid.style.gridTemplateColumns = '1fr';
+        } else if (window.innerWidth < 1024) {
+          grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        } else {
+          grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        }
+      });
+      // Metrics strip
+      const metricsGrid = document.querySelector('.cta-section')?.previousElementSibling?.previousElementSibling;
+      if (metricsGrid) {
+        const inner = metricsGrid.querySelector('div[style*="grid-template-columns:repeat(4"]');
+        if (inner) {
+          if (window.innerWidth < 640) {
+            inner.style.gridTemplateColumns = 'repeat(2, 1fr)';
+          } else {
+            inner.style.gridTemplateColumns = 'repeat(4, 1fr)';
+          }
+        }
+      }
+    }
+    updateGrids();
+    window.addEventListener('resize', updateGrids);
+  </script>
+
+</body>
+
+</html>
