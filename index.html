@@ -1649,8 +1649,8 @@
     function runTypewriter() {
       const h1       = document.getElementById('hero-title');
       const mobile   = window.innerWidth < 900;
-      const speed    = 40;
-      const jitter   = () => Math.random() * 16; // natural feel
+      const speed    = mobile ? 22 : 40;
+      const jitter   = () => Math.random() * (mobile ? 8 : 16);
 
       // Pre-render final state invisibly to lock in height → no layout shift
       h1.innerHTML = mobile
