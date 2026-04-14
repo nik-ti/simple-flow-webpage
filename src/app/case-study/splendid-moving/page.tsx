@@ -68,7 +68,7 @@ export default function SplendidMovingCaseStudy() {
                 <div className={styles.metrics}>
                   <div className={styles.metric}>
                     <span className={styles.metricNumber}>8</span>
-                    <span className={styles.metricLabel}>jobs rebooked in the first 30 days</span>
+                    <span className={styles.metricLabel}>jobs rebooked</span>
                   </div>
                   <div className={styles.metricDivider} />
                   <div className={styles.metric}>
