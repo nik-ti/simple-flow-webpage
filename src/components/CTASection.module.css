@@ -1,0 +1,177 @@
+.section {
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.ctaCard {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #1e14c0;
+}
+
+/* Shader layers */
+.shaderFallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, #3a28e0 0%, #1e14c0 50%, #140ea0 100%);
+  z-index: 1;
+}
+
+.shaderBase {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.shaderOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0.18;
+}
+
+/* Content sits above shaders */
+.ctaInner {
+  position: relative;
+  z-index: 3;
+  padding: 60px;
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ctaLeft {
+  color: white;
+}
+
+.ctaLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.ctaTitle {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.ctaDescription {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 28px;
+  max-width: 440px;
+}
+
+.bookBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: white;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.bookBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.ctaFooter {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+/* Quote Card */
+.ctaRight {
+  display: flex;
+  justify-content: center;
+}
+
+.quoteCard {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.quoteText {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.quoteAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+}
+
+.quoteName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.quoteCompany {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 48px 16px;
+  }
+
+  .ctaInner {
+    padding: 32px 24px;
+  }
+
+  .ctaCard {
+    border-radius: 16px;
+  }
+
+  .ctaGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .quoteCard {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}

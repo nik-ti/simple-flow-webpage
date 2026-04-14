@@ -1,0 +1,380 @@
+/* ── Hero ── */
+.heroSection {
+  padding: 0 16px;
+}
+
+.heroContainer {
+  max-width: 1560px;
+  margin: 0 auto;
+}
+
+.heroCard {
+  position: relative;
+  width: 100%;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1e14c0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shaderFallback {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, #3a28e0 0%, #1e14c0 50%, #140ea0 100%);
+  z-index: 1;
+}
+
+.shaderBase {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.shaderOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0.18;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 44px 56px;
+  color: white;
+  gap: 40px;
+}
+
+.backLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color var(--transition-fast);
+  width: fit-content;
+}
+
+.backLink:hover {
+  color: white;
+}
+
+.heroMain {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: fit-content;
+}
+
+.company {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: white;
+}
+
+.companyTagline {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+}
+
+/* Metrics row */
+.metrics {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 28px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 40px 0 0;
+}
+
+.metric:first-child {
+  padding-left: 0;
+}
+
+.metricDivider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 40px 0 0;
+  flex-shrink: 0;
+}
+
+.metricNumber {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+}
+
+/* ── Content ── */
+.contentWrap {
+  padding: 80px 24px;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blockLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+}
+
+.blockTitle {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.blockBody {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.separator {
+  height: 1px;
+  background: var(--color-border);
+  margin: 60px 0;
+}
+
+/* Approach */
+.approachList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 8px;
+}
+
+.approachItem {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.approachNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.approachBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 6px;
+}
+
+.approachHeading {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.approachText {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+/* Result metrics */
+.resultMetrics {
+  display: flex;
+  gap: 0;
+  margin-top: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.resultMetric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 28px 24px;
+  border-right: 1px solid var(--color-border);
+}
+
+.resultMetric:last-child {
+  border-right: none;
+}
+
+.resultNumber {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.resultLabel {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+/* ── Bottom CTA ── */
+.ctaSection {
+  padding: 80px 24px;
+  background: white;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.ctaText {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: var(--color-text);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+}
+
+.ctaBtn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.ctaNote {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 0 12px;
+  }
+
+  .heroCard {
+    min-height: 480px;
+    border-radius: 16px;
+  }
+
+  .heroContent {
+    padding: 28px 24px;
+    gap: 28px;
+  }
+
+  .metrics {
+    gap: 24px;
+  }
+
+  .metricDivider {
+    display: none;
+  }
+
+  .metric {
+    padding: 0;
+    min-width: calc(50% - 12px);
+  }
+
+  .contentWrap {
+    padding: 56px 16px;
+  }
+
+  .separator {
+    margin: 40px 0;
+  }
+
+  .resultMetrics {
+    flex-direction: column;
+  }
+
+  .resultMetric {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .resultMetric:last-child {
+    border-bottom: none;
+  }
+
+  .ctaSection {
+    padding: 56px 16px;
+  }
+}

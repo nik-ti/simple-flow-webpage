@@ -1,0 +1,165 @@
+.footer {
+  background: #1C1C1E;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 64px 24px 40px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.companyCol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 8px;
+}
+
+.hqBlock, .contactBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hqLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.hqAddress {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hqAddress a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.hqAddress a:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.emailLink {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--transition-fast);
+}
+
+.emailLink:hover {
+  color: white;
+}
+
+/* Links Column */
+.linksCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.colTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.linksCol a {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition-fast);
+}
+
+.linksCol a:hover {
+  color: white;
+}
+
+/* Footer Bottom */
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.trustNote {
+  font-size: 12px;
+}
+
+.trustNote a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.trustNote a:hover {
+  color: white;
+}
+
+.footerEmails {
+  display: flex;
+  gap: 20px;
+}
+
+.footerEmails a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color var(--transition-fast);
+}
+
+.footerEmails a:hover {
+  color: white;
+}
+
+.copyright {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 16px 32px;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .companyCol {
+    grid-column: 1 / -1;
+  }
+
+  .footerEmails {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,53 @@
+.section {
+  padding: 100px 24px;
+  background: white;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.note {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.ctaRow {
+  margin-top: 8px;
+}
+
+.trustLink {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  transition: opacity var(--transition-fast);
+}
+
+.trustLink:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 16px;
+  }
+}

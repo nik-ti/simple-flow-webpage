@@ -1,0 +1,330 @@
+.section {
+  padding: 96px 24px;
+  background: var(--color-bg);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.sectionSub {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 52px;
+}
+
+/* Tab Headers */
+.tabHeaders {
+  display: flex;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 56px;
+}
+
+.tabHeader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 16px 24px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-normal);
+  text-align: left;
+}
+
+.tabHeader::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-text);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+  transform-origin: left;
+}
+
+.tabHeader.active::after {
+  transform: scaleX(1);
+}
+
+.stepNumber {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  opacity: 0.5;
+  margin-bottom: 4px;
+  transition: opacity var(--transition-normal);
+}
+
+.tabHeader.active .stepNumber {
+  opacity: 1;
+  color: var(--color-text);
+}
+
+.tabLabel {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.02em;
+  transition: color var(--transition-normal);
+}
+
+.tabHeader.active .tabLabel {
+  color: var(--color-text);
+}
+
+.tabSubtitle {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.tabHeader.active .tabSubtitle {
+  opacity: 0.7;
+}
+
+/* Tab Content */
+.tabContent {
+  animation: tabIn 0.35s ease;
+}
+
+@keyframes tabIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tabGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  min-height: 380px;
+}
+
+/* Mockup Area */
+.mockupArea {
+  display: flex;
+  justify-content: center;
+}
+
+.mockupCard {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.mockupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mockupTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mockupBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border-radius: 6px;
+  padding: 3px 10px;
+}
+
+.mockupBadgeLive {
+  font-size: 11px;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 0.05em;
+}
+
+/* Learn mockup */
+.checkList {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #444;
+}
+
+.checkDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #d97706;
+  flex-shrink: 0;
+}
+
+/* Build mockup */
+.buildSteps {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.buildStep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.stepDone {
+  color: #22c55e;
+  font-weight: 700;
+  font-size: 14px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.stepPending {
+  color: #ccc;
+  font-size: 14px;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.stepTextDone {
+  color: #333;
+}
+
+.stepText {
+  color: #999;
+}
+
+/* Results mockup */
+.resultRows {
+  padding: 8px 0;
+}
+
+.resultRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+}
+
+.resultRow:last-child {
+  border-bottom: none;
+}
+
+.resultLabel {
+  color: var(--color-text-secondary);
+}
+
+.resultValue {
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+/* Footer */
+.mockupFooter {
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.footerTag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Text Area */
+.textArea {
+  padding: 20px 0;
+}
+
+.tabTitle {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.tabDescription {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--color-text);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+}
+
+.learnMore:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 16px;
+  }
+
+  .tabHeaders {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabHeader {
+    padding: 12px 16px 16px;
+    min-width: 110px;
+  }
+
+  .tabGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  .mockupCard {
+    max-width: 100%;
+  }
+}
