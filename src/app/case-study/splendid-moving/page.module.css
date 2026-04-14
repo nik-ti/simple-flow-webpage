@@ -341,7 +341,9 @@
   }
 
   .metrics {
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
   .metricDivider {
@@ -350,7 +352,15 @@
 
   .metric {
     padding: 0;
-    min-width: calc(50% - 12px);
+    min-width: 0;
+  }
+
+  .metricNumber {
+    font-size: 24px;
+  }
+
+  .metricLabel {
+    font-size: 11px;
   }
 
   .contentWrap {
@@ -362,16 +372,24 @@
   }
 
   .resultMetrics {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .resultMetric {
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
+    padding: 20px 12px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+    align-items: center;
+    text-align: center;
   }
 
   .resultMetric:last-child {
-    border-bottom: none;
+    border-right: none;
+  }
+
+  .resultNumber {
+    font-size: 22px;
   }
 
   .ctaSection {
