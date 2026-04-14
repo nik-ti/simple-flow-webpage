@@ -1,22 +1,22 @@
 import styles from "./LogosBar.module.css";
 
-const stats = [
-  { value: "3 days", label: "Average setup time" },
-  { value: "12+", label: "Businesses worked with" },
-  { value: "27+ hrs", label: "Saved per client monthly" },
-  { value: "$0", label: "Upfront payment required" },
+const tools = [
+  "Make", "GoHighLevel", "Zapier", "Stripe", "Calendly",
+  "Twilio", "HubSpot", "Airtable", "Notion", "ActiveCampaign",
+  "Make", "GoHighLevel", "Zapier", "Stripe", "Calendly",
+  "Twilio", "HubSpot", "Airtable", "Notion", "ActiveCampaign",
 ];
 
 export default function LogosBar() {
   return (
     <div className={styles.bar}>
-      <div className={styles.inner}>
-        {stats.map((stat, i) => (
-          <div key={i} className={styles.stat}>
-            <span className={styles.statValue}>{stat.value}</span>
-            <span className={styles.statLabel}>{stat.label}</span>
-          </div>
-        ))}
+      <div className={styles.label}>Works with tools you already use</div>
+      <div className={styles.track}>
+        <div className={styles.ticker}>
+          {tools.map((tool, i) => (
+            <span key={i} className={styles.toolPill}>{tool}</span>
+          ))}
+        </div>
       </div>
     </div>
   );

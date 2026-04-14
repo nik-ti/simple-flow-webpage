@@ -1,75 +1,47 @@
 .bar {
-  padding: 0 16px;
+  padding: 20px 0 24px;
   background: var(--color-bg);
-}
-
-.inner {
-  max-width: 1560px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--color-border);
-  border-radius: 0 0 16px 16px;
   overflow: hidden;
-  background: white;
 }
 
-.stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 24px;
-  gap: 4px;
-  border-right: 1px solid var(--color-border);
+.label {
   text-align: center;
-}
-
-.stat:last-child {
-  border-right: none;
-}
-
-.statValue {
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: -0.04em;
-  color: var(--color-text);
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 13px;
+  letter-spacing: 0.1em;
   color: var(--color-text-secondary);
-  line-height: 1.4;
+  opacity: 0.5;
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
-@media (max-width: 640px) {
-  .bar {
-    padding: 0 12px;
-  }
+.track {
+  overflow: hidden;
+  width: 100%;
+}
 
-  .inner {
-    grid-template-columns: repeat(2, 1fr);
-    border-radius: 0 0 12px 12px;
-  }
+.ticker {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: scroll 28s linear infinite;
+}
 
-  .stat:nth-child(2) {
-    border-right: none;
-  }
+.toolPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
-  .stat:nth-child(3) {
-    border-top: 1px solid var(--color-border);
-  }
-
-  .stat:nth-child(4) {
-    border-top: 1px solid var(--color-border);
-  }
-
-  .stat {
-    padding: 20px 12px;
-  }
-
-  .statLabel {
-    font-size: 11px;
-  }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

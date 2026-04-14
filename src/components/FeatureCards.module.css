@@ -224,9 +224,33 @@
 
   .grid {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .card:last-child {
     grid-column: auto;
+  }
+
+  .card {
+    border-radius: 20px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+  }
+
+  .cardMockup {
+    min-height: 180px;
+    padding: 20px;
+  }
+
+  .eyebrow {
+    padding: 16px 20px 0;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+
+  .cardDescription {
+    padding: 0 20px 20px;
   }
 }

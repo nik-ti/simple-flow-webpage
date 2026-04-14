@@ -66,7 +66,7 @@ export default function Hero() {
             </div>
 
             <h1 className={styles.heroTitle}>
-              Work less on your<br className={styles.titleBr} />business. Earn more<br className={styles.titleBr} />from it.
+              Work less on your{" "}<br className={styles.titleBr} />business. Earn more{" "}<br className={styles.titleBr} />from it.
             </h1>
 
             <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.heroButton} id="hero-book-call">
