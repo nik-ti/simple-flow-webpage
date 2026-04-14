@@ -5,7 +5,7 @@ const services = [
     id: "reactivation",
     color: "#7c3aed",
     iconBg: "#ede9fe",
-    icon: "↩",
+    icon: "↩︎",
     title: "Customer Reactivation",
     body: "Your old customers are your easiest sale. We reach out to people who hired you before and stopped — automatically. No chasing, no manual follow-up. Just rebooked jobs.",
     tags: ["Past customers", "Automated outreach", "More revenue"],
