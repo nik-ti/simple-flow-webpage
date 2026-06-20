@@ -162,16 +162,16 @@ export default function SplendidMovingCaseStudy() {
         {/* Bottom CTA */}
         <section className={styles.ctaSection}>
           <div className={styles.ctaInner}>
-            <p className={styles.ctaText}>Want results like this for your business?</p>
+            <p className={styles.ctaText}>Want results like this?</p>
             <a
               href="https://cal.com/nik-t/30min"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaBtn}
             >
-              BOOK A FREE CALL
+              BOOK A CALL
             </a>
-            <p className={styles.ctaNote}>30 minutes · Free · No commitment</p>
+            <p className={styles.ctaNote}>30 minutes · No fluff</p>
           </div>
         </section>
       </main>

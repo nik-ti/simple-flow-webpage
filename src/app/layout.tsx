@@ -3,21 +3,21 @@ import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
-  title: "Simple Flow — Automation for Home Service Businesses",
+  title: "Automations & AI Agents — Simple Flow",
   description:
-    "We build systems that make you more revenue and save you more time. Done-for-you automation for cleaning companies, HVAC, dental, auto repair, and more.",
+    "We build custom automations and AI agents that handle your operations. Done for you, live in 3 days.",
   openGraph: {
-    title: "Simple Flow — Automation for Home Service Businesses",
+    title: "Automations & AI Agents — Simple Flow",
     description:
-      "We build systems that make you more revenue and save you more time. No tech knowledge required.",
+      "We build custom automations and AI agents that handle your operations. Done for you, live in 3 days.",
     type: "website",
     url: "https://www.simpleflow.com/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Simple Flow — Automation for Home Service Businesses",
+    title: "Automations & AI Agents — Simple Flow",
     description:
-      "We build systems that make you more revenue and save you more time.",
+      "We build custom automations and AI agents that handle your operations. Done for you, live in 3 days.",
   },
 };
 

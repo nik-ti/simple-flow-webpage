@@ -32,12 +32,12 @@ export default function SeeItWork() {
     <section className={styles.section} id="see-it-work">
       <div className={styles.container}>
         <div className={styles.textCol}>
-          <h2 className={styles.title}>Every step, handled.</h2>
+          <h2 className={styles.title}>Every step, handled automatically.</h2>
           <p className={styles.description}>
-            From first inquiry to payment collected — automated. Your system follows up with new leads, re-engages past customers, sends job reminders, collects payment, and requests a review. Every time, without fail.
+            From first inquiry to payment collected — your system follows up with new leads, re-engages past customers, sends reminders, collects payment, and requests a review. Every time, without fail.
           </p>
           <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.cta} id="see-it-work-cta">
-            BOOK A FREE CALL
+            BOOK A CALL
           </a>
         </div>
         <div className={styles.flowCol}>

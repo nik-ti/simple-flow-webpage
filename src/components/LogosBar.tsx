@@ -4,7 +4,7 @@ const stats = [
   { value: "3 days", label: "Average setup time" },
   { value: "12+", label: "Businesses worked with" },
   { value: "27+ hrs", label: "Saved per client monthly" },
-  { value: "$0", label: "Upfront payment required" },
+  { value: "$0", label: "To get started" },
 ];
 
 export default function LogosBar() {

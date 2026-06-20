@@ -61,35 +61,31 @@ export default function Hero() {
           <div className={styles.heroContent}>
             <div className={styles.heroTop}>
               <div className={styles.tagline}>
-                DONE-FOR-YOU AUTOMATION
+                AUTOMATIONS & AI AGENTS
               </div>
             </div>
 
             <h1 className={styles.heroTitle}>
-              Work less on your{" "}<br className={styles.titleBr} />business. Earn more{" "}<br className={styles.titleBr} />from it.
+              Built for your{" "}<br className={styles.titleBr} />business. Running{" "}<br className={styles.titleBr} />without you.
             </h1>
 
             <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.heroButton} id="hero-book-call">
-              BOOK A FREE CALL
+              BOOK A CALL
             </a>
 
             <div className={styles.heroBottom}>
               <div className={styles.heroDescription}>
                 <p>
-                  We build systems that save you time and make you more money. Simple.
+                  We design and deploy custom automations and AI agents that handle the work your team shouldn&apos;t be doing.
                 </p>
                 <div className={styles.badges}>
-                  <div className={styles.badgeItem}>
-                    <span className={styles.badgeIcon}>✓</span>
-                    <span>No upfront payment</span>
-                  </div>
                   <div className={styles.badgeItem}>
                     <span className={styles.badgeIcon}>✓</span>
                     <span>Live in 3 days</span>
                   </div>
                   <div className={styles.badgeItem}>
                     <span className={styles.badgeIcon}>✓</span>
-                    <span>No monthly retainer</span>
+                    <span>Custom-built for the way you already operate</span>
                   </div>
                 </div>
               </div>

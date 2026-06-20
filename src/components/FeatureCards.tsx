@@ -57,9 +57,9 @@ const features = [
   {
     id: "simple",
     eyebrow: "HOW WE WORK",
-    title: "You don't set anything up.",
+    title: "We build it. You run it.",
     description:
-      "No software to configure. No sequences to write. We build it, connect it, and it runs. You just see the results.",
+      "No software to configure. No sequences to write. We build the system, connect it to your stack, and it runs. You see the results.",
     mockup: (
       <div className={styles.simpleCard}>
         <div className={styles.simpleRow}>
@@ -91,7 +91,7 @@ export default function FeatureCards() {
   return (
     <section className={styles.section} id="features">
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>What changes when nothing slips through.</h2>
+        <h2 className={styles.sectionTitle}>What happens when nothing falls through the cracks.</h2>
         <div className={styles.grid}>
           {features.map((f) => (
             <div key={f.id} className={styles.card} id={`feature-${f.id}`}>

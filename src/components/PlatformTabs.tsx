@@ -8,9 +8,9 @@ const steps = [
     number: "01",
     label: "We Learn",
     subtitle: "Your business",
-    title: "One call. That's all we need.",
+    title: "One call. That's all it takes.",
     description:
-      "We ask the right questions about your business — where you're losing time, where you're losing money, what tools you already use. Then we figure out exactly what to build.",
+      "We ask the right questions — where you're losing time, what's manual that shouldn't be, what tools you already use. Then we map exactly what to build.",
     mockup: "learn",
   },
   {
@@ -20,17 +20,17 @@ const steps = [
     subtitle: "Your system",
     title: "You don't touch a thing.",
     description:
-      "We build the automations, connect them to your existing tools, test everything, and hand you a fully running system. No new software to learn. No setup on your end.",
+      "We build the automations and AI agents, connect them to your existing stack, test everything, and hand you a fully running system.",
     mockup: "build",
   },
   {
     id: "results",
     number: "03",
-    label: "You Win",
+    label: "It Runs",
     subtitle: "See the results",
-    title: "We handle the work that doesn't need you.",
+    title: "The work runs. You don't.",
     description:
-      "Follow-ups, reminders, payment nudges, review requests — necessary, repetitive, and easy to push off. We automate exactly that, so you stay focused on the actual job you like doing.",
+      "Follow-ups, reminders, outreach, data entry, content — handled by systems that don't take days off. You stay focused on the work that actually needs you.",
     mockup: "results",
   },
 ];
@@ -134,7 +134,7 @@ export default function PlatformTabs() {
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>How it works</h2>
         <p className={styles.sectionSub}>
-          From first call to fully running system — in three steps.
+          From first call to fully deployed system — in three steps.
         </p>
 
         <div className={styles.tabHeaders}>
@@ -161,7 +161,7 @@ export default function PlatformTabs() {
               <h3 className={styles.tabTitle}>{step.title}</h3>
               <p className={styles.tabDescription}>{step.description}</p>
               <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.learnMore} id={`cta-step-${step.id}`}>
-                BOOK A FREE CALL
+                BOOK A CALL
               </a>
             </div>
           </div>

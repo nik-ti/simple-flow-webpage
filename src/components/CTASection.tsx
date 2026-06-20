@@ -54,12 +54,12 @@ export default function CTASection() {
           <div className={styles.ctaInner}>
             <div className={styles.ctaGrid}>
               <div className={styles.ctaLeft}>
-                <span className={styles.ctaLabel}>30 MINUTES · FREE · NO COMMITMENT</span>
+                <span className={styles.ctaLabel}>30 MINUTES · NO FLUFF</span>
                 <h2 className={styles.ctaTitle}>
-                  Free call. We&apos;ll tell you exactly what we&apos;d build.
+                  Let&apos;s map out what we&apos;d build.
                 </h2>
                 <p className={styles.ctaDescription}>
-                  We look at your business, identify where you&apos;re losing time and money, and walk you through what the system would look like. No obligation.
+                  We look at your operation, identify what should be automated or handed off to an AI agent, and walk you through exactly what we&apos;d build. No pitch deck.
                 </p>
 
                 <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.bookBtn} id="cta-book-demo">
@@ -67,7 +67,7 @@ export default function CTASection() {
                 </a>
 
                 <p className={styles.ctaFooter}>
-                  NO PREP NEEDED · NO UPFRONT COST · RESPONSE WITHIN 24 HRS
+                  STRAIGHT ANSWERS · FAST TURNAROUND · CUSTOM TO YOUR STACK
                 </p>
               </div>
 

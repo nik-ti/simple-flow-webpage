@@ -8,7 +8,7 @@ export default function Footer() {
           <div className={styles.companyCol}>
             <div className={styles.logo}>SIMPLE FLOW</div>
             <p className={styles.tagline}>
-              Done-for-you automation for home service businesses.
+              Automations and AI agents for businesses that want to scale.
             </p>
             <div className={styles.contactBlock}>
               <span className={styles.hqLabel}>Get in Touch</span>
@@ -18,12 +18,12 @@ export default function Footer() {
 
           <div className={styles.linksCol}>
             <h5 className={styles.colTitle}>Services</h5>
-            <a href="#services">Customer Reactivation</a>
+            <a href="#services">AI Agents</a>
+            <a href="#services">Workflow Automation</a>
             <a href="#services">Lead Follow-Up</a>
+            <a href="#services">Customer Reactivation</a>
             <a href="#services">Invoice Reminders</a>
             <a href="#services">Review Collection</a>
-            <a href="#services">Onboarding</a>
-            <a href="#services">Content & Marketing</a>
           </div>
 
           <div className={styles.linksCol}>
