@@ -4,26 +4,26 @@ const features = [
   {
     id: "revenue",
     eyebrow: "OUTCOME",
-    title: "Old customers, new revenue.",
+    title: "Top-tier customer interaction, but automated.",
     description:
-      "Most past customers didn't leave because they were unhappy. They just never heard from you again. We change that automatically.",
+      "Past customers are getting contacted, on schedule, while new ones are followed up with instantly — all on autopilot.",
     mockup: (
       <div className={styles.revenueCard}>
         <div className={styles.revenueRow}>
-          <span className={styles.revenueLabel}>Customers re-engaged</span>
-          <span className={styles.revenueVal}>+12</span>
+          <span className={styles.revenueLabel}>Past customers contacted</span>
+          <span className={styles.revenueVal}>24</span>
         </div>
         <div className={styles.revenueRow}>
-          <span className={styles.revenueLabel}>Jobs rebooked</span>
-          <span className={styles.revenueVal}>+9</span>
+          <span className={styles.revenueLabel}>New leads followed up</span>
+          <span className={styles.revenueVal}>47</span>
         </div>
         <div className={styles.revenueRow}>
-          <span className={styles.revenueLabel}>Revenue recovered</span>
-          <span className={styles.revenueVal}>+$2,700</span>
+          <span className={styles.revenueLabel}>Replies received</span>
+          <span className={styles.revenueVal}>18</span>
         </div>
         <div className={styles.revenueDivider} />
         <div className={styles.revenueTotal}>
-          <span>This month, zero effort</span>
+          <span>This month, on autopilot</span>
           <span className={styles.revenueTotalVal}>✓</span>
         </div>
       </div>
@@ -34,7 +34,7 @@ const features = [
     eyebrow: "OUTCOME",
     title: "27 hours back every month.",
     description:
-      "The average our clients stop spending on manual follow-ups, payment chasing, and check-ins. Same output, less time.",
+      "The average our clients stop spending on manual follow-ups, payment chasing, and accounting. More output, less manual work.",
     mockup: (
       <div className={styles.timeCard}>
         {[
@@ -68,10 +68,6 @@ const features = [
         </div>
         <div className={styles.simpleRow}>
           <span className={styles.simpleIcon}>✓</span>
-          <span>No monthly retainer</span>
-        </div>
-        <div className={styles.simpleRow}>
-          <span className={styles.simpleIcon}>✓</span>
           <span>Works with tools you already have</span>
         </div>
         <div className={styles.simpleRow}>
@@ -91,7 +87,7 @@ export default function FeatureCards() {
   return (
     <section className={styles.section} id="features">
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>What happens when nothing falls through the cracks.</h2>
+        <h2 className={styles.sectionTitle}>What happens when the inefficient, manual hassle is gone.</h2>
         <div className={styles.grid}>
           {features.map((f) => (
             <div key={f.id} className={styles.card} id={`feature-${f.id}`}>

@@ -56,10 +56,10 @@ export default function CTASection() {
               <div className={styles.ctaLeft}>
                 <span className={styles.ctaLabel}>30 MINUTES · NO FLUFF</span>
                 <h2 className={styles.ctaTitle}>
-                  Let&apos;s map out what we&apos;d build.
+                  Interested in progress? Let&apos;s talk.
                 </h2>
                 <p className={styles.ctaDescription}>
-                  We look at your operation, identify what should be automated or handed off to an AI agent, and walk you through exactly what we&apos;d build. No pitch deck.
+                  It&apos;s simple — we&apos;ll look at your operation, see how we can help, and give you the full plan.
                 </p>
 
                 <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.bookBtn} id="cta-book-demo">

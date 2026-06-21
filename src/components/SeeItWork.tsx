@@ -20,9 +20,15 @@ const steps = [
     done: false,
   },
   {
-    circle: "✓",
+    circle: "4",
     time: "Job paid",
     text: "Payment collected — review request triggered",
+    done: false,
+  },
+  {
+    circle: "✓",
+    time: "End of month",
+    text: "Accounting updated — records synced automatically",
     done: true,
   },
 ];

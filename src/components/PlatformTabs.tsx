@@ -10,7 +10,7 @@ const steps = [
     subtitle: "Your business",
     title: "One call. That's all it takes.",
     description:
-      "We ask the right questions — where you're losing time, what's manual that shouldn't be, what tools you already use. Then we map exactly what to build.",
+      "We identify where you're losing time, customers, and revenue. Then we show you the plan to fix those issues.",
     mockup: "learn",
   },
   {
@@ -18,7 +18,7 @@ const steps = [
     number: "02",
     label: "We Build",
     subtitle: "Your system",
-    title: "You don't touch a thing.",
+    title: "No manual work on your side.",
     description:
       "We build the automations and AI agents, connect them to your existing stack, test everything, and hand you a fully running system.",
     mockup: "build",
@@ -30,7 +30,7 @@ const steps = [
     subtitle: "See the results",
     title: "The work runs. You don't.",
     description:
-      "Follow-ups, reminders, outreach, data entry, content — handled by systems that don't take days off. You stay focused on the work that actually needs you.",
+      "Follow-ups, reminders, outreach, data entry, content — handled by systems that don't take days off. More time saved, more money made.",
     mockup: "results",
   },
 ];

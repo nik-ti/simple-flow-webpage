@@ -76,12 +76,12 @@ export default function Hero() {
             <div className={styles.heroBottom}>
               <div className={styles.heroDescription}>
                 <p>
-                  We design and deploy custom automations and AI agents that handle the work your team shouldn&apos;t be doing.
+                  We build automations and AI agents that save time and money.
                 </p>
                 <div className={styles.badges}>
                   <div className={styles.badgeItem}>
                     <span className={styles.badgeIcon}>✓</span>
-                    <span>Live in 3 days</span>
+                    <span>Live in 3 days or less</span>
                   </div>
                   <div className={styles.badgeItem}>
                     <span className={styles.badgeIcon}>✓</span>
