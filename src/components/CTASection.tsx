@@ -54,7 +54,7 @@ export default function CTASection() {
           <div className={styles.ctaInner}>
             <div className={styles.ctaGrid}>
               <div className={styles.ctaLeft}>
-                <span className={styles.ctaLabel}>30 MINUTES · NO FLUFF</span>
+                <span className={styles.ctaLabel}>30 MINUTES</span>
                 <h2 className={styles.ctaTitle}>
                   Interested in progress? Let&apos;s talk.
                 </h2>

@@ -171,7 +171,7 @@ export default function SplendidMovingCaseStudy() {
             >
               BOOK A CALL
             </a>
-            <p className={styles.ctaNote}>30 minutes · No fluff</p>
+            <p className={styles.ctaNote}>30 minutes</p>
           </div>
         </section>
       </main>
