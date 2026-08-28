@@ -94,7 +94,7 @@ export default function SplendidMovingCaseStudy() {
               <div className={styles.blockLabel}>THE PROBLEM</div>
               <h2 className={styles.blockTitle}>Two silent revenue leaks.</h2>
               <p className={styles.blockBody}>
-                Splendid Moving had built a solid customer base over three years — but two things were quietly costing them money. First, managers were spending a lot of time manually booking customers: collecting contact details and addresses, then entering everything into their CRM by hand. With the volume of leads they were handling, it added up fast.
+                Splendid Moving had built a solid customer base over three years — but two things were quietly costing them money. The first was booking. Every single job went through the same manual chain: a manager would pull the customer&apos;s details out of a text message, type them into the CRM by hand, then open Google Calendar — where the entire company&apos;s schedule lives — and create the event for the move. When the deposit came in, someone had to remember to go back into that event and update it. A few minutes here, a few minutes there, repeated across every lead, every day.
               </p>
               <p className={styles.blockBody}>
                 Second, they had no system for staying in touch with past clients. Staff were too busy with incoming work to follow up, so when former customers were ready to move again — typically six months or more later — they&apos;d simply find someone else.
@@ -105,7 +105,7 @@ export default function SplendidMovingCaseStudy() {
 
             <section className={styles.block}>
               <div className={styles.blockLabel}>OUR APPROACH</div>
-              <h2 className={styles.blockTitle}>Two systems. Zero new tools.</h2>
+              <h2 className={styles.blockTitle}>Three systems. Zero new tools.</h2>
               <div className={styles.approachList}>
                 <div className={styles.approachItem}>
                   <div className={styles.approachNum}>1</div>
@@ -119,9 +119,21 @@ export default function SplendidMovingCaseStudy() {
                 <div className={styles.approachItem}>
                   <div className={styles.approachNum}>2</div>
                   <div className={styles.approachBody}>
-                    <h4 className={styles.approachHeading}>Self-serve booking page</h4>
+                    <h4 className={styles.approachHeading}>Hands-off job booking</h4>
                     <p className={styles.approachText}>
-                      Created a custom online booking page, synced with the company&apos;s internal calendar, so customers could book themselves in by picking a date and entering their details. Each booking was automatically added to their CRM, ready for the team to pick up from there.
+                      Wired the whole booking chain together end to end. Customer details flow straight into the CRM, the Google Calendar event for the move is created automatically — formatted exactly the way the team already writes them — and the moment a deposit is paid, that event updates itself. No re-typing, nothing to remember, and no jobs sitting on the calendar with outdated payment info.
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.approachItem}>
+                  <div className={styles.approachNum}>3</div>
+                  <div className={styles.approachBody}>
+                    <h4 className={styles.approachHeading}>An AI assistant that books the job for you</h4>
+                    <p className={styles.approachText}>
+                      On top of that, we built an assistant the managers talk to in plain English. Send it a screenshot of the customer&apos;s message and it reads the details straight off the image, completes and verifies the pickup and drop-off addresses, creates the contact in the CRM, sends the customer their deposit payment link, and adds the job to the calendar. One screenshot in, a fully booked job out — without a manager typing a single field.
+                    </p>
+                    <p className={styles.approachText}>
+                      It&apos;s also connected to the company&apos;s internal data, so the team can just ask: how many jobs did we run last month, what&apos;s on the schedule for the next three days, how did this week compare to the last. Answers come back in seconds instead of someone digging through the CRM to piece them together.
                     </p>
                   </div>
                 </div>
@@ -137,7 +149,7 @@ export default function SplendidMovingCaseStudy() {
                 The reactivation system now runs continuously in the background — re-engaging past customers who often book again or refer friends and family. In the very first month alone, it brought in 8 additional jobs with no manual effort from the team.
               </p>
               <p className={styles.blockBody}>
-                The self-serve booking page has also taken most of the admin burden off managers: instead of handling the entire booking process themselves, they now just answer any clarifying questions. That freed-up time goes straight into growing the business.
+                Booking went from a chain of manual steps to a single message. What used to be several minutes of copying, pasting and calendar-wrangling for every job now happens on its own — or in the time it takes to forward a screenshot to the assistant. Deposits are always reflected on the calendar, nothing slips through because someone got busy, and the numbers managers used to hunt for are one question away. That freed-up time goes straight into growing the business.
               </p>
 
               <div className={styles.resultMetrics}>
