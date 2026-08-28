@@ -11,15 +11,15 @@ const features = [
       <div className={styles.revenueCard}>
         <div className={styles.revenueRow}>
           <span className={styles.revenueLabel}>Past customers contacted</span>
-          <span className={styles.revenueVal}>24</span>
+          <span className={styles.revenueVal}>103</span>
         </div>
         <div className={styles.revenueRow}>
           <span className={styles.revenueLabel}>New leads followed up</span>
-          <span className={styles.revenueVal}>47</span>
+          <span className={styles.revenueVal}>427</span>
         </div>
         <div className={styles.revenueRow}>
           <span className={styles.revenueLabel}>Replies received</span>
-          <span className={styles.revenueVal}>18</span>
+          <span className={styles.revenueVal}>316</span>
         </div>
         <div className={styles.revenueDivider} />
         <div className={styles.revenueTotal}>
