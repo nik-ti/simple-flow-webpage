@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "capture:demos": "node scripts/capture-demos.mjs"
   },
   "dependencies": {
     "@paper-design/shaders": "^0.0.72",
@@ -24,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "playwright": "^1.63.0",
     "typescript": "^5"
   }
 }

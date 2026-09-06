@@ -206,21 +206,11 @@
   overflow: hidden;
 }
 
-/* Scale a desktop-width iframe down to fit the card — live preview, not a screenshot */
-.iframeScale {
-  width: 400%;
-  height: 400%;
-  transform: scale(0.25);
-  transform-origin: top left;
-  pointer-events: none;
-}
-
-.iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  background: white;
+/* Screenshots are captured at the same 16:10 the frame uses, so nothing is
+   cropped; `cover` just guards against a stale image of another size. */
+.previewImage {
+  object-fit: cover;
+  object-position: top center;
 }
 
 .previewClick {
@@ -315,17 +305,5 @@
 
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  /* Slightly taller crop on phones so the hero reads better */
-  .previewFrame {
-    aspect-ratio: 4 / 3;
-  }
-
-  /* ~3x scale: card is ~full phone width, so preview renders near-desktop */
-  .iframeScale {
-    width: 300%;
-    height: 300%;
-    transform: scale(0.3333);
   }
 }

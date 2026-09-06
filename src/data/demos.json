@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "slug": "fernhill",
+    "title": "Fernhill",
+    "description": "Warm bone-and-forest palette for a private dental practice. Soft editorial type, unclinical photography, membership CTA front and center.",
+    "url": "https://fernhill-demo.netlify.app"
+  },
+  {
+    "id": 2,
+    "slug": "halstead",
+    "title": "Halstead",
+    "description": "Industrial design-build contractor site. Paper and concrete tones, terracotta accent, tight typography — built to feel like a real shop floor, not a template.",
+    "url": "https://halstead-demo.netlify.app"
+  },
+  {
+    "id": 3,
+    "slug": "hollowpine",
+    "title": "Hollowpine",
+    "description": "Dark cabin-retreat landing page. Ember accents on near-black, full-bleed nature imagery, and a luxury stay vibe that still converts bookings.",
+    "url": "https://hollowpine-demo.netlify.app"
+  },
+  {
+    "id": 4,
+    "slug": "larkspur",
+    "title": "Larkspur",
+    "description": "Calm SaaS product site. Soft paper backgrounds, sage and rose accents, and a clear hero promise — steady income clarity without the fintech chrome.",
+    "url": "https://larkspur-demo.netlify.app"
+  },
+  {
+    "id": 5,
+    "slug": "nocturne",
+    "title": "Nocturne",
+    "description": "Dark observability product marketing. Magenta and violet accents on deep ink, dense but readable — made for technical buyers who still want polish.",
+    "url": "https://demo-nocturne.netlify.app"
+  },
+  {
+    "id": 6,
+    "slug": "plotline",
+    "title": "Plotline",
+    "description": "Warm canvas content-calendar site. Coral accent, clean board-style hierarchy, and a shipping-focused narrative for small marketing teams.",
+    "url": "https://demo-plotline.netlify.app"
+  }
+]

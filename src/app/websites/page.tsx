@@ -1,139 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import ShaderBackground from "./ShaderBackground";
+import demos from "@/data/demos.json";
 import styles from "./page.module.css";
 
-function hasWebGL(): boolean {
-  try {
-    const canvas = document.createElement("canvas");
-    return !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
-  } catch {
-    return false;
-  }
-}
-
-function ShaderBackground() {
-  const [Shader, setShader] = useState<React.ComponentType<Record<string, unknown>> | null>(null);
-
-  useEffect(() => {
-    if (!hasWebGL()) return;
-    import("@paper-design/shaders-react")
-      .then((mod) => setShader(() => mod.MeshGradient))
-      .catch(() => {});
-  }, []);
-
-  if (!Shader) {
-    return <div className={styles.shaderFallback} />;
-  }
-
-  return (
-    <>
-      <Shader
-        className={styles.shaderBase}
-        colors={["#1e14c0", "#3a28e0", "#5a3cf5", "#7b5bf5", "#140ea0"]}
-        speed={0.8}
-        distortion={0.6}
-        swirl={0.5}
-      />
-      <Shader
-        className={styles.shaderOverlay}
-        colors={["#a87bff", "#d9a0f7", "#7b5bf5", "#a87bff"]}
-        speed={0.6}
-        distortion={0.4}
-        swirl={0.4}
-      />
-    </>
-  );
-}
-
-type Demo = {
-  id: number;
-  title: string;
-  description: string;
-  url: string;
-};
-
-const demos: Demo[] = [
-  {
-    id: 1,
-    title: "Fernhill",
-    description:
-      "Warm bone-and-forest palette for a private dental practice. Soft editorial type, unclinical photography, membership CTA front and center.",
-    url: "https://fernhill-demo.netlify.app",
-  },
-  {
-    id: 2,
-    title: "Halstead",
-    description:
-      "Industrial design-build contractor site. Paper and concrete tones, terracotta accent, tight typography — built to feel like a real shop floor, not a template.",
-    url: "https://halstead-demo.netlify.app",
-  },
-  {
-    id: 3,
-    title: "Hollowpine",
-    description:
-      "Dark cabin-retreat landing page. Ember accents on near-black, full-bleed nature imagery, and a luxury stay vibe that still converts bookings.",
-    url: "https://hollowpine-demo.netlify.app",
-  },
-  {
-    id: 4,
-    title: "Larkspur",
-    description:
-      "Calm SaaS product site. Soft paper backgrounds, sage and rose accents, and a clear hero promise — steady income clarity without the fintech chrome.",
-    url: "https://larkspur-demo.netlify.app",
-  },
-  {
-    id: 5,
-    title: "Nocturne",
-    description:
-      "Dark observability product marketing. Magenta and violet accents on deep ink, dense but readable — made for technical buyers who still want polish.",
-    url: "https://demo-nocturne.netlify.app",
-  },
-  {
-    id: 6,
-    title: "Plotline",
-    description:
-      "Warm canvas content-calendar site. Coral accent, clean board-style hierarchy, and a shipping-focused narrative for small marketing teams.",
-    url: "https://demo-plotline.netlify.app",
-  },
-];
-
-/**
- * Mobile browsers often discard iframe contents when the tab is backgrounded
- * (or restore a frozen page from bfcache). Bump this key when the user comes
- * back so previews remount instead of staying blank until a manual refresh.
- */
-function usePreviewReloadKey() {
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const remount = () => setKey((k) => k + 1);
-
-    const onPageShow = (event: PageTransitionEvent) => {
-      if (event.persisted) remount();
-    };
-
-    const onVisibility = () => {
-      if (document.visibilityState === "visible") remount();
-    };
-
-    window.addEventListener("pageshow", onPageShow);
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => {
-      window.removeEventListener("pageshow", onPageShow);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, []);
-
-  return key;
-}
-
 export default function WebsitesPage() {
-  const previewReloadKey = usePreviewReloadKey();
-
   return (
     <>
       <Navbar />
@@ -175,10 +49,10 @@ export default function WebsitesPage() {
           <div className={styles.demosContainer}>
             <h2 className={styles.demosTitle}>Demo sites</h2>
             <p className={styles.demosSubtitle}>
-              Live previews below. Tap a card or &ldquo;View demo&rdquo; to open the full site.
+              Tap a card or &ldquo;View demo&rdquo; to open the full site.
             </p>
             <div className={styles.grid}>
-              {demos.map((demo) => (
+              {demos.map((demo, index) => (
                 <article key={demo.id} className={styles.card} id={`demo-${demo.id}`}>
                   <div className={styles.preview}>
                     <div className={styles.browserChrome}>
@@ -187,17 +61,14 @@ export default function WebsitesPage() {
                       <span className={styles.dot} />
                     </div>
                     <div className={styles.previewFrame}>
-                      <div className={styles.iframeScale}>
-                        <iframe
-                          key={`${demo.id}-${previewReloadKey}`}
-                          src={demo.url}
-                          title={`${demo.title} live preview`}
-                          loading="lazy"
-                          tabIndex={-1}
-                          sandbox="allow-scripts allow-same-origin"
-                          className={styles.iframe}
-                        />
-                      </div>
+                      <Image
+                        src={`/demos/${demo.slug}.jpg`}
+                        alt={`${demo.title} demo site homepage`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 900px) 50vw, 33vw"
+                        priority={index < 3}
+                        className={styles.previewImage}
+                      />
                       <a
                         href={demo.url}
                         target="_blank"
