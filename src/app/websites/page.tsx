@@ -101,7 +101,39 @@ const demos: Demo[] = [
   },
 ];
 
+/**
+ * Mobile browsers often discard iframe contents when the tab is backgrounded
+ * (or restore a frozen page from bfcache). Bump this key when the user comes
+ * back so previews remount instead of staying blank until a manual refresh.
+ */
+function usePreviewReloadKey() {
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const remount = () => setKey((k) => k + 1);
+
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) remount();
+    };
+
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") remount();
+    };
+
+    window.addEventListener("pageshow", onPageShow);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.removeEventListener("pageshow", onPageShow);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
+
+  return key;
+}
+
 export default function WebsitesPage() {
+  const previewReloadKey = usePreviewReloadKey();
+
   return (
     <>
       <Navbar />
@@ -157,6 +189,7 @@ export default function WebsitesPage() {
                     <div className={styles.previewFrame}>
                       <div className={styles.iframeScale}>
                         <iframe
+                          key={`${demo.id}-${previewReloadKey}`}
                           src={demo.url}
                           title={`${demo.title} live preview`}
                           loading="lazy"
