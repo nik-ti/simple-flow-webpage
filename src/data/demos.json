@@ -40,5 +40,26 @@
     "title": "Plotline",
     "description": "Warm canvas content-calendar site. Coral accent, clean board-style hierarchy, and a shipping-focused narrative for small marketing teams.",
     "url": "https://demo-plotline.netlify.app"
+  },
+  {
+    "id": 7,
+    "slug": "monsoon",
+    "title": "Monsoon",
+    "description": "Southeast Asia private-travel studio. Photography-first hero, monsoon-season expertise, and a when-to-go planner that makes the calendar the product.",
+    "url": "https://monsoon-demo.netlify.app"
+  },
+  {
+    "id": 8,
+    "slug": "marketone",
+    "title": "Market ONE",
+    "description": "Light iridescent promo for a Telegram market-news channel. Upstream X and wire monitoring, plain-language posts, no signals — just the edge, early.",
+    "url": "https://marketone-demo.netlify.app"
+  },
+  {
+    "id": 9,
+    "slug": "sillage",
+    "title": "Sillage",
+    "description": "Gallery-white perfume house with a working cart. Six fragrances, scent finder, and notes pyramids — quiet luxury that still shops.",
+    "url": "https://sillage-demo.netlify.app"
   }
 ]
