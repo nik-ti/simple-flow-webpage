@@ -33,16 +33,16 @@ function ShaderBackground() {
       <Shader
         className={styles.shaderBase}
         colors={["#c94a1a", "#e05a00", "#ff6a1a", "#ff9940", "#b83a10"]}
-        speed={1.4}
-        distortion={0.9}
-        swirl={0.72}
+        speed={1.8}
+        distortion={1.1}
+        swirl={0.85}
       />
       <Shader
         className={styles.shaderOverlay}
         colors={["#ff8830", "#e05a10", "#ff7020", "#ff8830"]}
-        speed={1.1}
-        distortion={0.65}
-        swirl={0.60}
+        speed={1.4}
+        distortion={0.8}
+        swirl={0.7}
       />
     </>
   );

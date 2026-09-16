@@ -47,7 +47,7 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  opacity: 0.28;
+  opacity: 0.45;
 }
 
 /* Fades right side to light peach/cream, matching the original */
@@ -59,12 +59,12 @@
   z-index: 2;
   background: linear-gradient(
     108deg,
-    transparent 25%,
-    rgba(255, 190, 140, 0.45) 45%,
-    rgba(255, 205, 160, 0.72) 60%,
-    rgba(255, 220, 175, 0.88) 75%,
-    rgba(255, 230, 185, 0.94) 88%,
-    rgba(255, 235, 190, 0.97) 100%
+    transparent 42%,
+    rgba(255, 190, 140, 0.32) 58%,
+    rgba(255, 205, 160, 0.55) 70%,
+    rgba(255, 220, 175, 0.75) 82%,
+    rgba(255, 230, 185, 0.85) 92%,
+    rgba(255, 235, 190, 0.9) 100%
   );
   pointer-events: none;
 }
