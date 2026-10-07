@@ -1,0 +1,37 @@
+/* Styles for the step-illustration building blocks. Colors come from the page's
+   --accent / --accent-soft so every project's mockups match its palette. */
+.window { background: #fff; border-radius: 14px; border: 1px solid #e4e4e8; box-shadow: 0 14px 34px rgb(20 20 40 / 9%); overflow: hidden; min-width: 0; }
+.header { display: flex; align-items: center; gap: 10px; padding: 11px 15px; border-bottom: 1px solid #efeff2; font-size: 14px; color: #2a2a30; }
+.header b { font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mark, .headerIcon { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.mark { background: var(--accent); color: #fff; font-size: 12px; font-weight: 500; }
+.headerIcon { background: var(--accent-soft); color: var(--accent); }
+.body { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+.footer, .footerSuccess { display: flex; align-items: center; gap: 8px; padding: 10px 15px; font-size: 13px; border-top: 1px solid #efeff2; }
+.footer { color: #5d5d66; background: #f8f8fa; }
+.footerSuccess { color: #1d6b45; background: #eef8f2; }
+
+.me, .them { font-size: 14px; line-height: 1.45; padding: 9px 13px; border-radius: 12px; max-width: 86%; overflow-wrap: anywhere; }
+.me { align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
+.them { align-self: flex-start; background: #f1f1f4; color: #2a2a30; border-bottom-left-radius: 4px; }
+
+.checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.checklist li { display: flex; align-items: center; gap: 10px; color: #8d8d96; }
+.checklist li > span { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #cacad2; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.checklist .done { color: #2a2a30; }
+.checklist .done > span { background: var(--accent); border-color: var(--accent); color: #fff; }
+.checklist .now { color: var(--accent); font-weight: 500; }
+.checklist .now > span { border-color: var(--accent); box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 9px var(--accent); }
+
+.rows { margin: 0; display: flex; flex-direction: column; font-size: 14px; }
+.rows > div { display: flex; justify-content: space-between; gap: 14px; padding: 8px 0; border-bottom: 1px solid #f0f0f3; }
+.rows > div:last-child { border-bottom: 0; }
+.rows dt { color: #85858f; flex-shrink: 0; }
+.rows dd { margin: 0; color: #2a2a30; text-align: right; min-width: 0; overflow-wrap: anywhere; }
+
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 20px; width: fit-content; }
+.accent { background: var(--accent-soft); color: var(--accent); }
+.muted { background: #ededf1; color: #6b6b74; }
+.success { background: #e5f5ec; color: #1d6b45; }
+.note { display: inline-flex; align-items: center; gap: 8px; }
+.stack { display: flex; flex-direction: column; gap: 12px; }

@@ -1,0 +1,5 @@
+/* Frozen gradient layers retain the original card palettes.
+   A fixed scrim provides contrast behind the project titles. */
+.background, .shade { position: absolute; inset: 0; pointer-events: none; }
+.background { overflow: hidden; }
+.shade { background: linear-gradient(180deg, rgb(0 10 34 / 17%), transparent 42%, rgb(0 10 30 / 20%) 65%, rgb(0 10 30 / 66%) 100%); }

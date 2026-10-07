@@ -1,0 +1,9 @@
+/* Extra pieces for the ops-agent illustrations: the screenshot attachment and the
+   simple bar chart in the schedule answer. */
+.shot { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px dashed #cfc4e6; border-radius: 10px; background: #faf8fe; }
+.shot b { display: block; font-size: 14px; font-weight: 500; color: #2a2a30; }
+.shot small { font-size: 12px; color: #85858f; }
+.shotIcon { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.answer { display: flex; flex-direction: column; gap: 12px; background: #f1f1f4; border-radius: 12px; padding: 12px 14px; font-size: 14px; color: #2a2a30; }
+.bar { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 10px; font-size: 13px; color: #5d5d66; }
+.bar i { display: block; height: 10px; border-radius: 5px; background: var(--accent); }

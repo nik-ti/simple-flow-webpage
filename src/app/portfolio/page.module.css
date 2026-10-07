@@ -1,0 +1,10 @@
+/* The gallery uses the same type scale and content frame as the main site. */
+.page { max-width: 1248px; padding: 0 24px; margin: auto; }
+.intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding-top: 72px; }
+.label { font-size: 12px; display: flex; align-items: center; gap: 9px; color: #67676b; margin-bottom: 20px; }
+.label span { width: 6px; height: 6px; border-radius: 50%; background: #b75d36; }
+.intro h1 { font-size: clamp(44px, 5.4vw, 70px); line-height: 1.06; letter-spacing: -.03em; font-weight: 400; }
+.description { color: #6b6b6b; font-size: 16px; line-height: 1.6; padding-bottom: 4px; }
+.loading { min-height: 500px; padding: 50px 0; }
+@media(max-width: 950px) { .intro { align-items: flex-start; flex-direction: column; gap: 23px; } .description { max-width: 440px; } .desktopBreak { display: none; } }
+@media(max-width: 700px) { .page { padding: 0 18px; } .intro { padding-top: 43px; gap: 20px; } .intro h1 { font-size: 44px; letter-spacing: -.03em; } .label { margin-bottom: 16px; } .description { font-size: 16px; max-width: 360px; } }

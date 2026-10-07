@@ -1,5 +1,12 @@
 /* ===== ZeroDrift Design System ===== */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+/* DM Sans is self-hosted (public/fonts, SIL Open Font License). A Google Fonts @import here was dropped by the CSS bundler, so the font never loaded. */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+}
 
 *, *::before, *::after {
   margin: 0;

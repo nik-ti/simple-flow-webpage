@@ -1,0 +1,41 @@
+/* Styles for the support-agent step illustrations: mini chat windows,
+   the estimate checklist, and the example office email. */
+.chat { background: #fff; border-radius: 14px; box-shadow: 0 14px 34px rgb(22 50 110 / 10%); overflow: hidden; border: 1px solid #e3e8f0; }
+.chatHeader { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid #edf0f4; font-size: 14px; color: #233e65; }
+.chatHeader b { font-weight: 500; }
+.avatar { width: 26px; height: 26px; border-radius: 50%; background: #18325e; color: #fff; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; }
+.chatBody { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.chatBody p { font-size: 14px; line-height: 1.45; padding: 10px 13px; border-radius: 12px; max-width: 85%; }
+.customer { align-self: flex-end; background: #18325e; color: #fff; border-bottom-right-radius: 4px; }
+.sam { align-self: flex-start; background: #f0f3f8; color: #233e65; border-bottom-left-radius: 4px; }
+.source, .sent { display: flex; align-items: center; gap: 8px; padding: 11px 16px; font-size: 13px; border-top: 1px solid #edf0f4; }
+.source { color: #4d6587; background: #f7f9fc; }
+.sent { color: #1d6b45; background: #eef8f2; }
+
+.interview { display: grid; grid-template-columns: 1.2fr .8fr; gap: 14px; align-items: center; }
+.checklist { list-style: none; margin: 0; padding: 16px; background: #fff; border-radius: 14px; border: 1px solid #e3e8f0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.checklist li { display: flex; align-items: center; gap: 10px; color: #8a97a9; }
+.checklist li > span { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c6d0dd; display: inline-flex; align-items: center; justify-content: center; }
+.checklist .done { color: #233e65; }
+.checklist .done > span { background: #2f62c0; border-color: #2f62c0; color: #fff; }
+.checklist .now { color: #2f62c0; font-weight: 500; }
+.checklist .now > span { border-color: #2f62c0; box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 9px #2f62c0; }
+
+.requestSheet { background: #fff; border: 1px solid #dce2eb; border-radius: 14px; padding: 22px; box-shadow: 0 14px 34px rgb(22 50 110 / 10%); color: #233e65; }
+.sheetHeading { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid #e5e9ef; font-size: 18px; color: #6b85a8; }
+.sheetHeading b { font-weight: 500; color: #233e65; }
+.customerLine { display: flex; flex-direction: column; gap: 2px; margin-top: 14px; }
+.customerLine strong { font-weight: 500; }
+.customerLine span, .moveDetails { font-size: 13px; color: #697789; }
+.moveRoute { display: flex; align-items: center; gap: 14px; margin-top: 12px; font-size: 22px; letter-spacing: -.5px; color: #355985; }
+.moveRoute svg { color: #8298b5; }
+.moveDetails { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 4px; }
+.attachments { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.attachments > div { border: 1px solid #e5e9ef; border-radius: 8px; overflow: hidden; }
+.attachments svg { display: block; width: 100%; background: #f2f4f7; }
+.attachments span { display: block; padding: 7px 10px; font-size: 12px; color: #586b85; }
+
+@media(max-width: 430px) {
+  .interview { grid-template-columns: 1fr; }
+  .chatBody p { max-width: 92%; }
+}

@@ -1,0 +1,8 @@
+/* Extra pieces for the reactivation illustrations: the two-week calendar of
+   send days and the plain-text email body. */
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.dayName { font-size: 11px; color: #85858f; text-align: center; }
+.day { height: 40px; border-radius: 7px; background: #f6efea; display: flex; align-items: flex-end; overflow: hidden; }
+.day i { display: block; width: 100%; background: var(--accent); opacity: .85; }
+.email { display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.55; color: #2a2a30; }
+.email small { font-size: 12px; color: #85858f; padding-top: 6px; border-top: 1px solid #f0f0f3; }

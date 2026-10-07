@@ -16,7 +16,7 @@ export default function Navbar() {
           <a href="/#services" className={styles.navLink}>Services</a>
           <a href="/#how-it-works" className={styles.navLink}>How It Works</a>
           <a href="/#who-its-for" className={styles.navLink}>Who It&apos;s For</a>
-          <a href="/case-study/splendid-moving" className={styles.navLink}>Case Study</a>
+          <a href="/portfolio" className={styles.navLink}>Our work</a>
           <a href="/websites" className={styles.navLink}>Websites</a>
           <a href="/#contact" className={styles.navLink}>Contact</a>
         </div>
@@ -42,7 +42,7 @@ export default function Navbar() {
           <a href="/#services" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Services</a>
           <a href="/#how-it-works" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>How It Works</a>
           <a href="/#who-its-for" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Who It&apos;s For</a>
-          <a href="/case-study/splendid-moving" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Case Study</a>
+          <a href="/portfolio" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Our work</a>
           <a href="/websites" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Websites</a>
           <a href="/#contact" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Contact</a>
           <a href="https://cal.com/nik-t/30min" target="_blank" rel="noopener noreferrer" className={styles.mobileCta} onClick={() => setMobileOpen(false)}>BOOK A CALL</a>

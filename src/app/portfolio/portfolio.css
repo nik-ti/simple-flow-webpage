@@ -1,0 +1,6 @@
+/* Base styles the portfolio pages need on top of the site's globals: inherited button text,
+   visible keyboard focus (the site's buttons remove outlines), and inline icons. */
+.portfolio button { font: inherit; color: inherit; }
+.portfolio button:focus-visible, .portfolio a:focus-visible, .portfolio summary:focus-visible, .portfolio [tabindex]:focus-visible { outline: 3px solid #1376d0; outline-offset: 5px; }
+.portfolio svg { flex-shrink: 0; vertical-align: middle; }
+.portfolio ::selection { background: #c8dbfb; color: #112d5b; }
