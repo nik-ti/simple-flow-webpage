@@ -50,10 +50,10 @@
   },
   {
     "id": 8,
-    "slug": "marketone",
-    "title": "Market ONE",
-    "description": "Light iridescent promo for a Telegram market-news channel. Upstream X and wire monitoring, plain-language posts, no signals — just the edge, early.",
-    "url": "https://marketone-demo.netlify.app"
+    "slug": "aiflow",
+    "title": "AI Flow",
+    "description": "Black-and-white landing page for a Telegram AI news channel. Stippled artwork, a live-style feed of real posts, and a plain-English pitch that sends people straight to Telegram.",
+    "url": "https://ai-flow-daily.vercel.app"
   },
   {
     "id": 9,
