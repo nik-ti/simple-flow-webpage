@@ -117,14 +117,12 @@ try {
       const brandStyles = await page.evaluate(() => ({
         family: getComputedStyle(document.body).fontFamily,
         headingFamily: getComputedStyle(document.querySelector('h1')).fontFamily,
-        fontLoaded: document.fonts.check('16px "DM Sans"') && [...document.fonts].some(face => face.family.replace(/"/g, '') === 'DM Sans' && face.status === 'loaded'),
         background: getComputedStyle(document.body).backgroundColor,
         text: getComputedStyle(document.body).color,
         header: getComputedStyle(document.querySelector('#navbar')).position,
       }));
-      assert.match(brandStyles.family, /DM Sans/);
-      assert.match(brandStyles.headingFamily, /DM Sans/);
-      assert.equal(brandStyles.fontLoaded, true, `${name} loads DM Sans`);
+      assert.match(brandStyles.family, /^Arial/);
+      assert.match(brandStyles.headingFamily, /^Arial/);
       assert.equal(brandStyles.background, 'rgb(240, 240, 240)');
       assert.equal(brandStyles.text, 'rgb(28, 28, 30)');
       assert.equal(brandStyles.header, 'sticky');
@@ -158,7 +156,7 @@ try {
   assert.equal(await page.locator('canvas').count(), 0);
   assert.equal(await page.getByRole('button', { name: /motion/i }).count(), 0);
   assert.deepEqual(errors, [], 'No browser runtime errors');
-  console.log('PASS: filters, navigation, inline video, keyboard controls, local assets, DM Sans design tokens, responsive layouts, static gradients, screenshots.');
+  console.log('PASS: filters, navigation, inline video, keyboard controls, local assets, Arial design tokens, responsive layouts, static gradients, screenshots.');
 } finally {
   await browser.close();
 }
