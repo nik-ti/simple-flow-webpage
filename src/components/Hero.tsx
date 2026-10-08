@@ -90,9 +90,9 @@ export default function Hero() {
                 </div>
               </div>
 
-              <a href="/case-study/splendid-moving" className={styles.caseStudyCard} id="hero-case-study">
-                <span className={styles.csEyebrow}>CASE STUDY</span>
-                <span className={styles.csTagline}>Read a success story →</span>
+              <a href="/portfolio" className={styles.caseStudyCard} id="hero-case-study">
+                <span className={styles.csEyebrow}>SEE OUR WORK</span>
+                <span className={styles.csTagline}>Explore the portfolio →</span>
               </a>
             </div>
           </div>

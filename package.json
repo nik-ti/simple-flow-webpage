@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "capture:demos": "node scripts/capture-demos.mjs",
-    "test:portfolio": "node tests/portfolio.mjs"
+    "test:portfolio": "node tests/portfolio.mjs",
+    "test:hero": "node tests/hero-cta.mjs"
   },
   "dependencies": {
     "@paper-design/shaders": "^0.0.72",
