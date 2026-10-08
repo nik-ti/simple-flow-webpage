@@ -63,10 +63,6 @@ export default function NewsChannel() {
     <StackSection items={[
       { name: 'Python', logo: 'python', text: 'The language the whole pipeline is written in.' },
       { name: 'LangGraph', logo: 'langgraph', text: 'Runs the editorial steps in order: drop repeats, sort, group into stories, write, edit, check, publish.' },
-      { name: 'Gemini', logo: 'googlegemini', text: 'Sorts the news, spots repeats, and picks the picture or clip for each post.' },
-      { name: 'DeepSeek', logo: 'deepseek', text: 'Writes each post in the channel’s voice.' },
-      { name: 'Claude', logo: 'claude', text: 'The editor: checks every post against its source before it goes out.' },
-      { name: 'Mistral', logo: 'mistralai', text: 'Makes sure each post tells readers something they haven’t already seen.' },
       { name: 'SQLite', logo: 'sqlite', text: 'Remembers every item and story, so nothing is posted twice.' },
       { name: 'Telegram', logo: 'telegram', text: 'Where the finished posts are published.' },
       { name: 'FastAPI', logo: 'fastapi', text: 'Serves the data for a private dashboard that shows every decision the system made.' },

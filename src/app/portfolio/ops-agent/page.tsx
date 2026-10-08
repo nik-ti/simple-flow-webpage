@@ -81,12 +81,9 @@ export default function OpsAgent() {
     <StackSection items={[
       { name: 'Python', logo: 'python', text: 'The language the whole agent is written in.' },
       { name: 'LangGraph', logo: 'langgraph', text: 'Lets the conversation pause for a missing detail or an approval, then pick up exactly where it stopped.' },
-      { name: 'OpenAI', logo: 'openai', text: 'The vision model that reads the customer’s details from the screenshot.' },
-      { name: 'Google Cloud Vision', logo: 'googlecloud', text: 'Reads the exact characters on screen, so emails and phone numbers come through without typos.' },
+      { name: 'FastAPI', logo: 'fastapi', text: 'Receives messages from Google Chat and passes them to the agent.' },
+      { name: 'SQLite', logo: 'sqlite', text: 'Saves each conversation, so it can pause for an answer and pick up later.' },
       { name: 'Google Chat', logo: 'googlechat', text: 'Where the team talks to the agent.' },
-      { name: 'Google Calendar', logo: 'googlecalendar', text: 'The schedule it books into and answers questions from.' },
-      { name: 'Google Maps', logo: 'googlemaps', text: 'Turns a partial address into a full, verified one.' },
-      { name: 'GoHighLevel', logo: 'gohighlevel', text: 'The company’s CRM: customer contacts, deposit invoices, texts, and the confirmation email go through it.' },
       { name: 'Railway', logo: 'railway', text: 'Hosts the agent and keeps conversations on a saved volume.' },
     ]} />
   </CaseStudyPage>;

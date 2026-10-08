@@ -80,8 +80,6 @@ export default function ReactivationCampaign() {
     <StackSection items={[
       { name: 'Python', logo: 'python', text: 'Scripts that clean the list, schedule the messages, and run the booking check.' },
       { name: 'Resend', logo: 'resend', text: 'Holds each email until its send date and delivers it from the right brand’s domain.' },
-      { name: 'Zoho', logo: 'zoho', text: 'The old CRM most past customers came from.' },
-      { name: 'Supermove', logo: 'supermove', text: 'The current CRM: recent customers, and the bookings used to skip anyone who came back.' },
     ]} />
   </CaseStudyPage>;
 }

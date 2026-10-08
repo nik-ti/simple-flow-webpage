@@ -83,6 +83,7 @@ export default function SupportAgent() {
       { name: 'LangGraph', logo: 'langgraph', text: 'Guides the conversation and genuinely pauses while the customer replies.' },
       { name: 'SQLite', logo: 'sqlite', text: 'Keeps the conversation so a customer can pick up where they left off.' },
       { name: 'Resend', logo: 'resend', text: 'Delivers the request and its photos to the office.' },
+      { name: 'Railway', logo: 'railway', text: 'Hosts the agent.' },
     ]} />
   </CaseStudyPage>;
 }

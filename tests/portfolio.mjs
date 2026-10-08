@@ -20,7 +20,7 @@ async function checkCaseStudyTemplate(page, demoId) {
   assert.equal(await page.locator('#what-changes [data-after]').count(), isNews ? 0 : 1);
   assert.equal(await page.getByRole('link', { name: /See how it works/i }).getAttribute('href'), `#${intro}`);
   assert.equal(await page.locator('details[data-stack]').count(), 1, 'Tech stack is expandable');
-  assert.ok(await page.locator('details[data-stack] [class*=stackItem] svg path').count() >= 3, 'Stack items show service logos');
+  assert.ok(await page.locator('details[data-stack] [class*=stackItem] svg path').count() >= 2, 'Stack items show service logos');
   const text = await page.locator('main').innerText();
   assert.doesNotMatch(text.replace(/\b(0?[1-9])\b\s*\n/g, ''), /\b\d+\s*(%|customers|checks|hours|jobs|minutes|leads)\b/i, 'No metrics while the no-numbers rule stands');
 }

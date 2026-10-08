@@ -81,7 +81,6 @@ export default function ReviewRequests() {
       { name: 'HTML, CSS & JavaScript', logo: 'javascript', text: 'A single, lightweight page with no framework, so it loads quickly on any phone.' },
       { name: 'Vercel', logo: 'vercel', text: 'Hosts the page and the small function that sends feedback emails.' },
       { name: 'Resend', logo: 'resend', text: 'Delivers each private message to the owner’s inbox.' },
-      { name: 'Google reviews', logo: 'google', text: 'Five-star customers open the business’s review box directly.' },
     ]} />
   </CaseStudyPage>;
 }
