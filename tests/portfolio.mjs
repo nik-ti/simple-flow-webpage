@@ -7,7 +7,7 @@ import { mkdir } from 'node:fs/promises';
 // Every case study follows the problem → solution reading order, except the news channel,
 // which reads what it does → how it works → demo.
 async function checkCaseStudyTemplate(page, demoId) {
-  const isNews = demoId === 'news-demo';
+  const isNews = demoId === 'news-live';
   const intro = isNews ? 'what-it-does' : 'problem';
   const order = isNews ? [intro, 'how-it-works', demoId] : [intro, 'solution', 'how-it-works', 'what-changes', demoId];
   for (const id of order) await page.locator(`#${id}`).waitFor({ timeout: 3000 });
@@ -30,7 +30,7 @@ const caseStudies = [
   ['/portfolio/customer-support-agent', 'support-demo'],
   ['/portfolio/ops-agent', 'ops-demo'],
   ['/portfolio/voice-type', 'voice-demo'],
-  ['/portfolio/news-channel', 'news-demo'],
+  ['/portfolio/news-channel', 'news-live'],
   ['/portfolio/review-requests', 'feedback-demo'],
   ['/portfolio/reactivation-campaign', 'reactivation-demo'],
 ];
@@ -92,6 +92,12 @@ try {
   for (const [route, demoId] of caseStudies) {
     await page.goto(`${base}${route}`);
     await checkCaseStudyTemplate(page, demoId);
+    if (demoId === 'news-live') {
+      const channel = page.locator('#news-live [data-live-link] a');
+      assert.equal(await channel.getAttribute('href'), 'https://t.me/ai_flow_daily', 'News page links to the live channel');
+      assert.equal(await page.locator('#news-live video').count(), 0, 'News page has no film');
+      continue;
+    }
     assert.equal(await page.locator(`#${demoId} [data-demo-placeholder]`).count(), 0, `${route} has its film, not a placeholder`);
     const demoVideo = page.locator(`#${demoId} video`);
     assert.equal(await demoVideo.getAttribute('controls'), '', `${route} film has native controls`);
@@ -133,7 +139,7 @@ try {
   }
   for (const width of [320, 375, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    for (const [route, demoId] of caseStudies) {
+    for (const [route, demoId] of caseStudies.filter(([, id]) => id !== 'news-live')) {
       await page.goto(`${base}${route}`);
       const dimensions = await page.locator(`#${demoId} video`).boundingBox();
       assert.ok(dimensions.width <= width - 32, `${route} video fits at ${width}px`);

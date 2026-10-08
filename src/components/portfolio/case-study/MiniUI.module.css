@@ -29,7 +29,7 @@
 .rows dt { color: #85858f; flex-shrink: 0; }
 .rows dd { margin: 0; color: #2a2a30; text-align: right; min-width: 0; overflow-wrap: anywhere; }
 
-.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 20px; width: fit-content; }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 20px; width: fit-content; white-space: nowrap; flex-shrink: 0; }
 .accent { background: var(--accent-soft); color: var(--accent); }
 .muted { background: #ededf1; color: #6b6b74; }
 .success { background: #e5f5ec; color: #1d6b45; }

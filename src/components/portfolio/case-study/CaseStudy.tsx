@@ -130,6 +130,25 @@ export function DemoSection({ id, heading, text, video, number = '05' }: {
   </section>;
 }
 
+// For projects that are best seen live (like a public channel): a gradient card with a link out
+// instead of a film. `children` is an optional example shown beside the text.
+export function LiveLinkSection({ id, number = '05', heading, text, href, cta, colors, children }: {
+  id: string; number?: string; heading: ReactNode; text: ReactNode; href: string; cta: string; colors: string[]; children?: ReactNode;
+}) {
+  return <section id={id} className={styles.section} aria-labelledby={`${id}-title`}>
+    <SectionLabel number={number}>See it live</SectionLabel>
+    <div className={styles.liveCard} data-live-link>
+      <Gradient colors={colors} />
+      <div className={styles.liveText}>
+        <h2 id={`${id}-title`}>{heading}</h2>
+        <p>{text}</p>
+        <a className={styles.heroLink} href={href} target="_blank" rel="noopener noreferrer">{cta} <Icon name="diagonal" size={18} /></a>
+      </div>
+      {children && <div className={styles.liveVisual} aria-hidden="true">{children}</div>}
+    </div>
+  </section>;
+}
+
 // Light brand colors (e.g. JavaScript yellow) get a dark glyph so the logo stays readable.
 function isLight(hex: string) {
   const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));

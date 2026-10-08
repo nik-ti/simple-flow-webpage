@@ -47,3 +47,12 @@ export function PostVisual() {
     <p className={styles.link}>Try it →</p>
   </Window>;
 }
+
+// A real post from the channel (7 Oct 2026), shown beside the link to the live channel.
+export function LivePostVisual() {
+  return <Window title="AI Flow" mark="AI" footer={<><Icon name="check" size={14} />Posted to @ai_flow_daily</>}>
+    <p className={styles.headline}>ChatGPT can now listen to your audio files and tell you what’s in them</p>
+    <p className={styles.body}>The new feature lets you upload a recording and get a transcript, a summary, or ask questions about what was said. It’s available for people with a paid ChatGPT subscription or a workspace account.</p>
+    <p className={styles.link}>Read the notes here</p>
+  </Window>;
+}

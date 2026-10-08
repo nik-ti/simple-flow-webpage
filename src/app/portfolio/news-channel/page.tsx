@@ -1,9 +1,9 @@
 // The AI Flow case study: a Telegram channel that finds, filters, writes, and posts AI news
-// on its own. It uses a shorter layout than the other pages: what it does → how → demo → stack.
+// on its own. It uses a shorter layout than the other pages: what it does → how → live channel link → stack.
 import type { Metadata } from 'next';
-import { CaseHero, CaseStudyPage, DemoSection, ProblemSection, StackSection, StepsSection } from '@/components/portfolio/case-study/CaseStudy';
+import { CaseHero, CaseStudyPage, LiveLinkSection, ProblemSection, StackSection, StepsSection } from '@/components/portfolio/case-study/CaseStudy';
 import { projects } from '@/data/projects';
-import { DedupeVisual, EditorVisual, FilterVisual, PostVisual, SourcesVisual } from './StepVisuals';
+import { DedupeVisual, EditorVisual, FilterVisual, LivePostVisual, PostVisual, SourcesVisual } from './StepVisuals';
 
 export const metadata: Metadata = {
   title: 'AI news channel — Simple Flow',
@@ -48,18 +48,17 @@ export default function NewsChannel() {
       ]}
     />
 
-    <DemoSection
+    <LiveLinkSection
       number="03"
-      id="news-demo"
-      heading="A story, from source to post."
-      text="Follow one real AI Flow post: incoming headlines, repeats merged, the sorter’s call, the writer and editor, then the finished post in the channel."
-      video={{
-        videoId: 'news-channel-video',
-        src: '/videos/news-channel.mp4',
-        poster: '/videos/news-channel-poster.jpg',
-        label: 'AI Flow pipeline illustration ending on a real post from the channel.',
-      }}
-    />
+      id="news-live"
+      heading={<>Read it on<br />Telegram</>}
+      text="AI Flow is live. New posts land through the day, each one found, written, and checked by the system above."
+      href="https://t.me/ai_flow_daily"
+      cta="Open @ai_flow_daily"
+      colors={projects[3].colors}
+    >
+      <LivePostVisual />
+    </LiveLinkSection>
 
     <StackSection items={[
       { name: 'Python', logo: 'python', text: 'The language the whole pipeline is written in.' },

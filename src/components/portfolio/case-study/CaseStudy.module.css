@@ -67,6 +67,11 @@
 /* 05 Demo */
 .demoIntro { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 36px; }
 .demoIntro > p { color: #555; font-size: 17px; line-height: 1.7; }
+.liveCard { position: relative; overflow: hidden; isolation: isolate; border-radius: 24px; color: white; padding: 56px; display: grid; grid-template-columns: 1fr minmax(0, 400px); gap: 48px; align-items: center; }
+.liveText, .liveVisual { position: relative; z-index: 1; min-width: 0; }
+.liveText h2 { font-size: clamp(32px, 3.4vw, 46px); font-weight: 400; letter-spacing: -.03em; line-height: 1.08; }
+.liveText p { margin-top: 18px; max-width: 460px; font-size: 17px; line-height: 1.65; color: rgb(255 255 255 / 88%); }
+.liveVisual { color: #1c1c1e; }
 .filmFrame { width: 100%; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid #e0e0e0; border-radius: 16px; background: #1c1c1e; }
 .film { display: block; width: 100%; height: 100%; object-fit: contain; background: #1c1c1e; }
 .placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center; color: #fff; background: linear-gradient(135deg, var(--accent), #1c1c1e); }
@@ -110,6 +115,7 @@
   .heroDescription br { display: none; }
   .section { margin-top: 76px; }
   .split, .demoIntro, .compare { grid-template-columns: 1fr; gap: 20px; }
+  .liveCard { grid-template-columns: 1fr; padding: 34px 26px; gap: 30px; }
   .solution { padding: 36px 28px 36px 34px; }
   .step { grid-template-columns: 1fr; padding: 26px; }
   .stepVisual { padding: 20px; min-height: 0; }
